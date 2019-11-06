@@ -1,65 +1,35 @@
-print('importing libraries')
-from mido import MidiFile
+from data import load_data 
+from model import VelocityLSTM
 import torch
-import os
 import torch.nn as nn
-import torch.nn.functional as F
 from torch.autograd import Variable
+import torch.nn.functional as F
 import numpy as np
-from torch.utils.data import Dataset, DataLoader
-import torch.optim as optim
-from sklearn.model_selection import train_test_split
-import random, matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
-class VelocityLSTM(nn.Module):
-    # num_msgs is the number of messages in the input MIDI file
-    def __init__(self, hidden_dim):
-        super(VelocityLSTM, self).__init__()
-        self.hidden_dim = hidden_dim
-        #hidden dimensions can be whatever we want, the 1st dimension is 2 becuase there are 2 attributes (pitch, time)
-        self.lstm = nn.LSTM(input_size=2, hidden_size=hidden_dim, batch_first=True)
 
-        #add a fully connected layer
-        self.full = nn.Linear(hidden_dim, hidden_dim)
-
-        # The linear layer that maps from hidden state space to results space
-        self.final = nn.Linear(hidden_dim, 1)  # second arg needs to vary with number of notes in MIDI file
-        self.hidden = self.init_hidden()
-
-    def forward(self, msgs):
-        lstm_out, self.hidden = self.lstm(msgs)
-        last_hidden = self.hidden[0][-1]
-        full = self.full(lstm_out)
-        full = self.full(full)
-        yhat = F.relu(self.final(full))
-        return yhat.view(yhat.shape[0], yhat.shape[1])
-    def init_hidden(self):
-        h_0 = Variable(torch.cuda.FloatTensor(1, 1, self.hidden_dim).zero_())
-
-        c_0 = Variable(torch.cuda.FloatTensor(1, 1, self.hidden_dim).zero_())
-        return (h_0, c_0)
-
-#load data from numpy files
+# load data
 print('loading data')
-x_train = np.load('./data/x_train.npy')
-x_test = np.load('./data/x_test.npy')
-y_train = np.load('./data/y_train.npy')
-y_test = np.load('./data/y_test.npy')
+data_dir = './data/numpy/'
+x_train, x_test, y_train, y_test = load_data(data_dir)
+x_train = x_train[2]
+y_train = y_train[2]
 
 print('creating model')
+hidden_dim = 128
 learning_rate = 0.001
-model = VelocityLSTM(128).cuda()
+model = VelocityLSTM(hidden_dim).cuda()
 optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate, weight_decay=1e-5)
 loss_function = nn.MSELoss()
 
-
 def validation():
     print('Validating..')
-    y, yhat,  losses = [], [], []
+    y, yhat, metadata, losses = [], [], [], []
     model.eval()
-    for idx in [batch_size * x for x in range(int(len(x_test) / batch_size))]:
-        data = Variable(torch.Tensor(x_test[idx:idx + batch_size])).cuda()
-        target =  Variable(torch.FloatTensor(y_test[idx:idx + batch_size])).cuda()
+    for idx in [batch_size * x for x in range(int(len(x_test[2]) / batch_size))]:
+        data = Variable(torch.Tensor(x_test[2][idx:idx + batch_size])).cuda()
+        metadata.append(x_test[:2][idx:idx + batch_size])
+        target =  Variable(torch.FloatTensor(y_test[2][idx:idx + batch_size])).cuda()
         model.zero_grad()
         output= model(data)
 
@@ -72,11 +42,11 @@ def validation():
 
         yhat.append(output)
 
-    return yhat, np.mean(losses)
+    return yhat, np.mean(losses), metadata
 
 print('beginning training loop')
 #train
-train_loss, val_loss, yhats = [],[],[]
+train_loss, val_loss, yhats, metadatas = [],[],[], []
 epochs = range(100)
 batch_size = 10
 
@@ -107,8 +77,9 @@ for epoch in epochs:
     loss = np.mean(losses)
     train_loss.append(loss)
     print("epoch loss: " + str(loss))
-    yhat, valloss = validation()
+    yhat, valloss, metadata = validation()
     val_loss.append(valloss)
+    metadatas.append(metadata)
     yhats.append(yhat)
     print ('val loss:' + str(valloss))
 import matplotlib.pyplot as plt
@@ -126,4 +97,5 @@ i = np.argmin(val_loss)
 np.save('train_loss.npy', np.array(train_loss))
 np.save('val_loss.npy', np.array(val_loss))
 np.save('res.npy', np.array(yhats[i]))
+np.save('meta.npy', np.array(metadatas[i]))
 np.save('realy.npy',np.array(y_test))
