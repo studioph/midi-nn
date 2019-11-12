@@ -30,8 +30,8 @@ def load_midi(path, file):
     # load the files using mido
     # keep the filename attached to each matrix for reintegration
     pair = [file, MidiFile(path + file)]
-    x = [pair[0], get_attributes(pair[1])]
-    y = [pair[0], get_velocities(pair[1])]
+    x = [[pair[0], get_attributes(pair[1])]
+    y = [[pair[0], get_velocities(pair[1])]
     return x, y
 
 def split(midis, size):
