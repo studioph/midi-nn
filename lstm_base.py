@@ -54,7 +54,7 @@ loss_function = nn.MSELoss()
 
 def validation():
     print('Validating..')
-    y, yhat,  losses = [], [], []
+    yhat,  losses = [], []
     model.eval()
     for idx in [batch_size * x for x in range(int(len(x_test) / batch_size))]:
         data = Variable(torch.Tensor(x_test[idx:idx + batch_size])).cuda()
@@ -67,7 +67,7 @@ def validation():
 
         output = output.data.cpu().numpy()
         losses.append(loss.item())
-        target_data = target.data.cpu().numpy()
+        # target_data = target.data.cpu().numpy()
 
         yhat.append(output)
 
