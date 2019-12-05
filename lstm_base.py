@@ -30,7 +30,6 @@ class VelocityLSTM(nn.Module):
         lstm_out, self.hidden = self.lstm(msgs)
         last_hidden = self.hidden[0][-1]
         full = self.full(lstm_out)
-        full = self.full(full)
         yhat = F.relu(self.final(full))
         return yhat.view(yhat.shape[0], yhat.shape[1])
     def init_hidden(self):
@@ -55,7 +54,7 @@ loss_function = nn.MSELoss()
 
 def validation():
     print('Validating..')
-    y, yhat,  losses = [], [], []
+    yhat,  losses = [], []
     model.eval()
     for idx in [batch_size * x for x in range(int(len(x_test) / batch_size))]:
         data = Variable(torch.Tensor(x_test[idx:idx + batch_size])).cuda()
@@ -68,7 +67,7 @@ def validation():
 
         output = output.data.cpu().numpy()
         losses.append(loss.item())
-        target_data = target.data.cpu().numpy()
+        # target_data = target.data.cpu().numpy()
 
         yhat.append(output)
 
@@ -77,8 +76,8 @@ def validation():
 print('beginning training loop')
 #train
 train_loss, val_loss, yhats = [],[],[]
-epochs = range(100)
-batch_size = 10
+epochs = range(10)
+batch_size = 50
 
 for epoch in epochs:
     print("EPOCH %d" % epoch)
