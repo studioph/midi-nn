@@ -60,7 +60,16 @@ plt.title('Average velocities')
 plt.savefig(save_dir + 'avg_vel.png')
 plt.close()
 
+vel_diffs = [[abs(v[i + 1] - v[i]) for i in range(len(v))[:-1]] for v in velocities]
 
+#velocity differences
+plt.hist(vel_diffs, rwidth=0.8)
+plt.yscale('log')
+plt.xlabel('Difference in velocity')
+plt.ylabel('Number of notes')
+plt.title('Differences in velocity from note-to-note')
+plt.savefig(save_dir + 'vel_diff.png')
+plt.close()
 
 with open('./data/stats.csv', 'w') as file:
     writer = csv.writer(file, delimiter=',')

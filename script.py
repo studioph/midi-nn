@@ -23,7 +23,7 @@ save_dir = './data/results/'
 midi_dir = './data/original/'
 
 print('loading data')
-data = load_data(load_dir, size_limit=10)
+data = load_data(load_dir, size_limit=100)
 data = sequence_data(data, seq_len)
 random.shuffle(data)
 data = batch_data(data, batch_size)
@@ -48,7 +48,7 @@ def validation():
         try:
             model.zero_grad()
             output= model(data)
-            merged.append((batch[:,0], [row[:,0] for row in batch[:,1]], output))
+            
             loss = loss_function(output,target)
             pass
         except:
@@ -57,6 +57,7 @@ def validation():
 
 
         output = output.data.cpu().numpy()
+        merged.append((batch[:,0], [row[:,0] for row in batch[:,1]], output))
         losses.append(loss.item())
         # target_data = target.data.cpu().numpy()
 

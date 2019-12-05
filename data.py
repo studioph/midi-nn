@@ -1,6 +1,7 @@
 from mido import MidiFile, MidiTrack
 import numpy as np 
 from os import listdir
+from copy import deepcopy
 
 
 def load_data(load_dir, size_limit=None):
@@ -32,15 +33,20 @@ def split(data, train_size):
 
 def reconstruct(batch, midi_dir, save_dir):
     filenames, idxs, velocities = batch
-    velocities = velocities.cpu().detach().numpy().astype(int)
+    velocities = velocities.astype(int)
     for i, filename in enumerate(filenames):
         print('reconstructing file ' + filename + '_' + str(i) + '.mid')
         mid = MidiFile(midi_dir + filename + '.mid')
         track = mid.tracks[0]
+        #save original chunk
+        orig_mid = deepcopy(mid)
+        split_file(orig_mid, track, int(idxs[i][0]), int(idxs[i][-1]))
+        orig_mid.save(save_dir + filename + '_' + str(i) + '_orig.mid',)
         for j, idx in enumerate(idxs[i]):
             track[int(idx)].velocity = velocities[i][j]
         split_file(mid, track, int(idxs[i][0]), int(idxs[i][-1]))
         mid.save(save_dir + filename + '_' + str(i) + '_res.mid',)
+    print('done');
 
 def split_file(mid, track, start_idx, end_idx):
     meta_msgs = [msg for msg in track if msg.is_meta][:-1]
