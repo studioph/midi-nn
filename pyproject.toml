@@ -8,6 +8,9 @@ authors = ["paul <dev@studiop.page>"]
 python = "^3.8"
 note-seq = "^0.0.1"
 tensorflow-gpu = "^2.3.1"
+jupyterlab = "^2.2.8"
+notebook = "^6.1.4"
+jupyter_http_over_ws = "^0.0.8"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
