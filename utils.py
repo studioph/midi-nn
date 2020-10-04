@@ -1,5 +1,6 @@
 import ast
 from note_seq.protobuf import music_pb2
+from note_seq.performance_encoder_decoder import NotePerformanceEventSequenceEncoderDecoder
 
 """
 Reads a dictionary file of NoteSequences. Note that depending
@@ -17,3 +18,7 @@ def load_ns_file(file):
     for key in filemaps:
         filemaps[key] = music_pb2.NoteSequence().FromString(filemaps[key])
     return filemaps
+
+def ns_to_tensor(ns):
+    encoder = NotePerformanceEventSequenceEncoderDecoder(32)
+    tensor = encoder.encode(ns)
