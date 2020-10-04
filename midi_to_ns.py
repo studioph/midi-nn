@@ -1,6 +1,7 @@
 from note_seq import midi_file_to_note_sequence
 import json, argparse, os, time
 from multiprocessing import Pool
+import numpy as np
 
 """
 Converts a list of MIDI files into a dictionary map of filenames
@@ -11,33 +12,32 @@ Args:
         directory path and a list of MIDI file names
 
 Returns:
-    dict(string, bytes)
+    [filename, NoteSequence (bytes)]
 """
 def convert_midi_files(args):
     input_dir, files = args
-    filemap = {} # dictionary of filenames to NoteSequences for reconstruction
+    filemap = []
     for file in files:
         print(f'Converting {file}...')
         filename = file[:-4]
         input_path = input_dir + '/' + file
         sequence = midi_file_to_note_sequence(input_path)
-        filemap[filename] = sequence.SerializeToString()
+        filemap.append([filename, sequence])
     return filemap
 
 """
-Merges 2 dictionaries together
+Merges arrays
 
 Args:
-    dicts (iterable<dict>): An iterable containing dictionaries
+    [filename, NoteSequence]
 
 Returns:
-    A dictionary containing all key-value pairs from all 
-    dictionaries in dicts
+    A single level array with filename, NoteSequence pairs
 """
-def merge_dicts(dicts):
-    merged = {}
-    for d in dicts:
-        merged = {**merged, **d}
+def merge(arrs):
+    merged = []
+    for arr in arrs:
+        merged += arr
     return merged
 
 """
@@ -71,11 +71,10 @@ if __name__ == '__main__':
     # parallelize the conversions. Merge the dictionaries at the end
     with Pool(args.processes) as pool:
         results = pool.map(convert_midi_files, [(args.input_dir, split_files[i]) for i in range(len(split_files))])
-    filemaps = merge_dicts(results)
+    filemaps = merge(results)
     end = time.time() - start
 
     # Write dictionary to file for later use
-    with open(args.output_file, 'w') as outfile:
-        outfile.write(str(filemaps))
+    np.save(args.output_file, filemaps)
     print('Done')
     print(f'Conversion took {round(end, 2)}s')
