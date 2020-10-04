@@ -3,3 +3,4 @@ data/
 *.cpr
 *.png
 _pycache_/
+.ipynb_checkpoints/
