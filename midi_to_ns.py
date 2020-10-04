@@ -75,6 +75,6 @@ if __name__ == '__main__':
     end = time.time() - start
 
     # Write dictionary to file for later use
-    np.save(args.output_file, filemaps)
+    np.save(args.output_file, filemaps, allow_pickle=False)
     print('Done')
     print(f'Conversion took {round(end, 2)}s')
