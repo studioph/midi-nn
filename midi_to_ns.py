@@ -1,18 +1,6 @@
 from note_seq import midi_file_to_note_sequence
 import json, argparse, os, time
-
-# check if we are running in Jupyter Notebook, since we need 
-# to use multiprocess module instead of multiprocessing
-def in_ipynb():
-    try:
-        cfg = get_ipython().config 
-        if cfg['IPKernelApp']['parent_appname'] == 'ipython-notebook':
-            from multiprocess import Pool
-        else:
-            from multiprocessing import Pool
-    except NameError:
-        from multiprocessing import Pool
-    return Pool
+from multiprocessing import Pool
 
 """
 Converts a list of MIDI files into a dictionary map of filenames
@@ -67,7 +55,6 @@ def split(arr, n):
     return (arr[i * k + min(i, m):(i + 1) * k + min(i + 1, m)] for i in range(n))
 
 if __name__ == '__main__':
-    Pool = in_ipynb()
     parser = argparse.ArgumentParser()
 
     # --input_dir FOLDER --output_file FOLDER --threads 4
