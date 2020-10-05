@@ -12,6 +12,8 @@ jupyterlab = "^2.2.8"
 notebook = "^6.1.4"
 jupyter_http_over_ws = "^0.0.8"
 keras = "^2.4.3"
+torch = "^1.6.0"
+torchvision = "^0.7.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
