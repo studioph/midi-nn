@@ -1,6 +1,5 @@
 from tensorflow.keras import Sequential
 from tensorflow.keras.layers import Dense, Embedding, LSTM, Activation, TimeDistributed, Dropout
-from tensorflow.keras.callbacks import ModelCheckpoint
 
 def create_model(hidden_size, use_dropout=True):
     model = Sequential()
@@ -11,5 +10,4 @@ def create_model(hidden_size, use_dropout=True):
     model.add(TimeDistributed(Dense(128))) # 128 possible velocities
     model.add(Activation('softmax'))
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['categorical_accuracy'])
-    checkpointer = ModelCheckpoint(filepath='model-{epoch:02d}.hdf5', verbose=1)
     return model
