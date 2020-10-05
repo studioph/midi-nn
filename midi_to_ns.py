@@ -65,7 +65,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
     start = time.time()
 
-    files = [file for file in os.listdir(args.input_dir) if file.lower().endswith('.mid')]
+    files = [file for file in os.listdir(args.input_dir) if file.lower().endswith('.mid')][:100]
     split_files = list(split(files, args.processes))
 
     # parallelize the conversions. Merge the dictionaries at the end
@@ -75,6 +75,6 @@ if __name__ == '__main__':
     end = time.time() - start
 
     # Write dictionary to file for later use
-    np.save(args.output_file, filemaps, allow_pickle=False)
+    np.save(args.output_file, filemaps)
     print('Done')
     print(f'Conversion took {round(end, 2)}s')
