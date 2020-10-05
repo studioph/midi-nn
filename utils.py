@@ -98,7 +98,7 @@ Encodes the real velocities as a one-hot tensor of length 128
 def encode_velocities(tensor):
     z = []
     for idx, value in enumerate(tensor):
-        ohv = np.zeros(128)
+        ohv = np.zeros(128) # 128 velocities to choose from
         ohv[int(value)] = 1
         z.append(ohv)
     return np.array(z)
