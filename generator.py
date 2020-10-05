@@ -12,16 +12,20 @@ Yields:
     x,y ()
 """
 class KerasBatchGenerator(object):
-    def __init__(self, x_data, y_data):
+    def __init__(self, x_data, y_data, batch_size, seq_length):
         self.x_data = x_data
         self.y_data = y_data
         self.current_idx = 0
+        self.batch_size = batch_size
+        self.seq_length = seq_length
 
     def generate(self):
         while True:
-            if self.current_idx >= len(self.x_data):
-                self.current_idx = 0 # reset back to start
-            x = self.x_data[self.current_idx] # get the tensor
+            x = np.zeros((self.batch_size, self.seq_length, 3))
+            for i in range(self.batch_size):
+                if self.current_idx >= len(self.x_data):
+                    self.current_idx = 0 # reset back to start
+                x[i,:,:] = self.x_data[self.current_idx]
             # encode one-hot tensor of actual velocities
-            y = np.array(encode_velocities(tensor) for tensor in self.y_data)
-            yield x, y
+            y = np.array([encode_velocities(tensor) for tensor in self.y_data])
+            yield x.astype(np.float32), y.astype(np.float32)

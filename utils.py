@@ -2,11 +2,11 @@ from note_seq.protobuf import music_pb2
 from note_seq.performance_encoder_decoder import NotePerformanceEventSequenceEncoderDecoder
 import numpy as np
 from sklearn.model_selection import train_test_split
-from tensorflow.test import is_gpu_available
+import tensorflow as tf
 
 # quit and print an error if there's no GPU
 def checkGPU():
-    if not is_gpu_available():
+    if len(tf.config.list_physical_devices('GPU')) == 0:
         raise EnvironmentError("No GPU detected!")
         exit(code=1)
 
@@ -20,9 +20,9 @@ Returns:
     (np.array): A tensor with the following shape:
         (# of notes, 3)
 """
-def ns_to_tensor(seq):
+def ns_to_tensor(seq, seq_length):
     tensor = []
-    for note in seq.notes:
+    for note in seq.notes[:seq_length]:
         duration = round(note.end_time - note.start_time, 4)
         tensor.append([note.velocity, note.pitch, duration])
     return np.array(tensor)
@@ -37,10 +37,10 @@ Returns:
     (np.array): A tensor with the following shape:
         (len(seqs), (# of notes in sequence, 3))
 """
-def ns_to_tensors(seqs):
+def ns_to_tensors(seqs, seq_length):
     tensors = []
     for seq in seqs:
-        tensors.append([seq[0], ns_to_tensor(seq[1])])
+        tensors.append([seq[0], ns_to_tensor(seq[1], seq_length)])
     return np.array(tensors)
 
 """
@@ -77,8 +77,8 @@ def map_names_to_indexes(tensors):
 """
 Creates the test and train splits from the ground truths
 """
-def create_test_train(seqs, ratio=0.1, saveFile=True):
-    tensors = ns_to_tensors(seqs)
+def create_test_train(seqs, seq_length, ratio=0.1, saveFile=True):
+    tensors = ns_to_tensors(seqs, seq_length)
     y = np.array([np.copy(tensor[:,0]) for tensor in tensors[:,1]])
     set_velocities(tensors[:,1])
     x = tensors
@@ -86,8 +86,12 @@ def create_test_train(seqs, ratio=0.1, saveFile=True):
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=ratio)
     train_mapping = map_names_to_indexes(x_train)
     test_mapping = map_names_to_indexes(x_test)
-    x_train = x_train[:,1]
-    x_test = x_test[:,1]
+    x_train = np.rollaxis(np.dstack(x_train[:,1]), -1)
+    x_test = np.rollaxis(np.dstack(x_test[:,1]), -1)
+    x_train = x_train.astype(np.float32)
+    x_test = x_test.astype(np.float32)
+    y_train = y_train.astype(np.float32)
+    y_test = y_test.astype(np.float32)
     if saveFile:
         np.save('data/train_test', [train_mapping, test_mapping, x_train, x_test, y_train, y_test])
     return train_mapping, test_mapping, x_train, x_test, y_train, y_test
@@ -101,4 +105,4 @@ def encode_velocities(tensor):
         ohv = np.zeros(128) # 128 velocities to choose from
         ohv[int(value)] = 1
         z.append(ohv)
-    return np.array(z)
+    return np.array(z).astype(np.float32)

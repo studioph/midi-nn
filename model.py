@@ -10,4 +10,5 @@ def create_model(hidden_size, use_dropout=True):
     model.add(TimeDistributed(Dense(128))) # 128 possible velocities
     model.add(Activation('softmax'))
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['categorical_accuracy'])
+    print(model.summary())
     return model
