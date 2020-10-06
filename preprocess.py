@@ -1,6 +1,6 @@
 import numpy as np
 from sklearn.model_selection import train_test_split
-import time
+import time, argparse
 
 """
 Converts a NoteSequence into an array of shape 
@@ -82,16 +82,18 @@ def create_test_train(seqs, seq_length, ratio=0.1):
     x_test = x_test[:,1]
     return train_mapping, test_mapping, x_train, x_test, y_train, y_test
 
-input_file = 'data/notesequences.npy'
-output_file = 'data/train_test.npy'
+parser = argparse.ArgumentParser()
+parser.add_argument("--input_file", dest = "input_file", help = "Input file containing NoteSequences")
+parser.add_argument("--output_file", dest = "output_file", help = "Output file to write the train and test datasets to")
+args = parser.parse_args()
 
 start = time.time()
-print(f'Loading {input_file} file...')
-sequences = np.load(input_file, allow_pickle=True)
+print(f'Loading {args.input_file} file...')
+sequences = np.load(args.input_file, allow_pickle=True)
 print('Creating training and testing sets')
 datasets = create_test_train(sequences, seq_length=100)
-print(f'Saving to {output_file}...')
-np.save(output_file, datasets)
+print(f'Saving to {args.output_file}...')
+np.save(args.output_file, datasets)
 end = time.time() - start
 print('Done')
 print(f'Preprocessing took {round(end, 2)}s')
