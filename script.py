@@ -18,8 +18,10 @@ x_test = [utils.seq_to_tensor(seq) for seq in x_test]
 
 NUM_FEATURES = 3
 SEQ_LENGTH = 100
-NUM_EPOCHS = 100
-SAVE_FILE = 'model'
+NUM_EPOCHS = 500
+MODEL_SAVE_FILE = 'model'
+LOSS_SAVE_FILE = 'losses.npy'
+SCORES_SAVE_FILE = 'scores.npy'
 
 model = VelocityLSTM(NUM_FEATURES)
 model.cuda()
@@ -69,10 +71,12 @@ def train():
     return losses
 
 losses = train()
-torch.save(model, SAVE_FILE)
+np.save(LOSSES_SAVE_FILE, losses)
+torch.save(model, MODEL_SAVE_FILE)
 
 print('Final scores after training:')
 with torch.no_grad():
     inputs = x_train[0].cuda()
     scores = model(inputs)
     print(scores)
+    np.save(SCORES_SAVE_FILE, scores.cpu())

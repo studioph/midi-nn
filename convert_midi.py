@@ -77,4 +77,4 @@ if __name__ == '__main__':
     np.save(args.output_file, filemaps)
     end = time.time() - start
     print('Done')
-    print(f'Conversion took {round(end, 2)}s')
+    print(f'Conversion took {round(end / 60, 1)}m')
