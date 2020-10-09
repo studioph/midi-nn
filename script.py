@@ -1,4 +1,4 @@
-import torch, utils
+import torch, utils, sys
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
@@ -71,7 +71,7 @@ def train():
     return losses
 
 losses = train()
-np.save(LOSSES_SAVE_FILE, losses)
+np.save(LOSS_SAVE_FILE, losses)
 torch.save(model, MODEL_SAVE_FILE)
 
 print('Final scores after training:')
