@@ -1,33 +1,21 @@
 import torch
 import torch.nn as nn
-from torch.autograd import Variable
 import torch.nn.functional as F
+import torch.optim as optim
 
 class VelocityLSTM(nn.Module):
-    # num_msgs is the number of messages in the input MIDI file
-    def __init__(self, hidden_dim):
+    def __init__(self, num_features):
         super(VelocityLSTM, self).__init__()
-        self.hidden_dim = hidden_dim
-        #hidden dimensions can be whatever we want, the 1st dimension is 2 becuase there are 2 attributes (pitch, time)
-        self.lstm = nn.LSTM(input_size=2, hidden_size=hidden_dim, batch_first=True)
+        self.lstm_input_size = num_features
+        self.lstm_output_size = num_features
+        self.target_size = 128 # 128 possible velocities
+        self.lstm = nn.LSTM(num_features, num_features)
+        self.hidden = (torch.randn(1, 1, num_features),
+                        torch.randn(1, 1, num_features))
+        self.hidden2target = nn.Linear(num_features, self.target_size)
 
-        #add a fully connected layer
-        self.full = nn.Linear(hidden_dim, hidden_dim)
-
-        # The linear layer that maps from hidden state space to results space
-        self.final = nn.Linear(hidden_dim, 1)  # second arg needs to vary with number of notes in MIDI file
-        self.hidden = self.init_hidden()
-
-    def forward(self, msgs):
-        lstm_out, self.hidden = self.lstm(msgs)
-        last_hidden = self.hidden[0][-1]
-        full = self.full(lstm_out)
-        yhat = F.relu(self.final(full))
-        return yhat.view(yhat.shape[0], yhat.shape[1])
-    def init_hidden(self):
-        h_0 = Variable(torch.cuda.FloatTensor(1, 1, self.hidden_dim).zero_())
-
-        c_0 = Variable(torch.cuda.FloatTensor(1, 1, self.hidden_dim).zero_())
-        return (h_0, c_0)
-
-        
+    def forward(self, sequence):
+        lstm_out, _ = self.lstm(sequence)
+        target_space = self.hidden2target(lstm_out.view(len(sequence), -1))
+        scores = F.log_softmax(target_space, dim=1)
+        return scores

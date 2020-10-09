@@ -1,0 +1,34 @@
+import numpy as np
+import torch
+
+"""
+Ensures GPU is detected
+"""
+def checkGPU():
+    if not torch.cuda.is_available():
+        raise EnvironmentError('GPU not detected!')
+        exit(1)
+
+"""
+Encodes the real velocities as a one-hot tensor of length 128
+"""
+def encode_velocities(arr):
+    ohvs = []
+    for idx, value in enumerate(arr):
+        ohv = torch.zeros(128) # 128 velocities to choose from
+        ohv[int(value)] = 1
+        ohvs.append(ohv)
+    return torch.cat(ohvs).view(len(ohvs), 1, -1).float()
+
+"""
+Converts array of target arrays into one-hot tensors
+"""
+def encode_dataset(ds):
+    return [encode_velocities(arr) for arr in ds]
+
+"""
+Converts array-based sequence into PyTorch tensor
+"""
+def seq_to_tensor(seq):
+    notes = [torch.tensor(note) for note in seq]
+    return torch.cat(notes).view(len(seq), 1, -1).float()
