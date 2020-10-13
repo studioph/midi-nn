@@ -25,6 +25,7 @@ SCORES_SAVE_FILE = 'scores.npy'
 
 model = VelocityLSTM(NUM_FEATURES)
 model.cuda()
+# use mse
 loss_function = nn.CrossEntropyLoss()
 optimizer = optim.SGD(model.parameters(), lr=0.1)
 
