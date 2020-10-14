@@ -24,24 +24,24 @@ y_test = [torch.tensor(batch).float() for batch in y_test]
 x_train = [torch.tensor(batch).float() for batch in x_train]
 x_test = [torch.tensor(batch).float() for batch in x_test]
 
-model = VelocityLSTM(NUM_FEATURES, BATCH_SIZE)
+model = VelocityLSTM(NUM_FEATURES)
 model.cuda()
 loss_function = nn.MSELoss()
-optimizer = optim.SGD(model.parameters(), lr=0.1)
+optimizer = optim.SGD(model.parameters(), lr=0.2)
 
 def validate():
     print('Validating...')
     model.eval()
     losses = []
-    for sequence, targets in zip(x_test, y_test):
+    for batch, targets in zip(x_test, y_test):
         try:
             model.zero_grad()
-            output= model(sequence.cuda())
-            
+            output= model(batch.cuda())
             loss = loss_function(output,targets.cuda())
             pass
         except:
             e = sys.exc_info()[0]
+            print(e)
             pass
         losses.append(loss.item())
     mean_loss = np.mean(losses)
@@ -55,18 +55,17 @@ def train():
         model.train()
         print(f'Training epoch {epoch + 1}...')
         for batch, targets in zip(x_train, y_train):
-            # Step 1. Remember that Pytorch accumulates gradients.
-            # We need to clear them out before each instance
-            model.zero_grad()
-
-            # Step 2. Run our forward pass.
-            scores = model(batch.cuda())
-
-            # Step 4. Compute the loss, gradients, and update the parameters by
-            #  calling optimizer.step()
-            loss = loss_function(scores, targets.cuda())
-            loss.backward()
-            optimizer.step()
+            try:
+                model.zero_grad()
+                scores = model(batch.cuda())
+                loss = loss_function(scores, targets.cuda())
+                loss.backward()
+                optimizer.step()
+                pass
+            except:
+                e = sys.exc_info()[0]
+                print(e)
+                pass
         losses.append(validate())
     print('Training complete')
     return losses
