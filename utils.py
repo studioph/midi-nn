@@ -32,3 +32,19 @@ Converts array-based sequence into PyTorch tensor
 def seq_to_tensor(seq):
     notes = [torch.tensor(note) for note in seq]
     return torch.cat(notes).view(len(seq), 1, -1).float()
+
+"""
+Extracts batches of length N from an array of samples
+Args:
+
+Returns:
+"""
+def batch_data(arr, batch_size):
+    batches = []
+    idxs = range(len(arr) + batch_size)[0::batch_size]
+    for idx in range(len(idxs[:-1])):
+        batches.append(arr[idxs[idx]:idxs[idx + 1]])
+    # discard incomplete batches
+    if len(batches[-1]) != batch_size:
+        batches.pop()
+    return batches
