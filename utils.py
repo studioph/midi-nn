@@ -27,13 +27,6 @@ def encode_dataset(ds):
     return [encode_velocities(arr) for arr in ds]
 
 """
-Converts array-based sequence into PyTorch tensor
-"""
-def seq_to_tensor(seq):
-    notes = [torch.tensor(note) for note in seq]
-    return torch.cat(notes).view(len(seq), 1, -1).float()
-
-"""
 Extracts batches of length N from an array of samples
 Args:
 
