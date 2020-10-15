@@ -41,3 +41,28 @@ def batch_data(arr, batch_size):
     if len(batches[-1]) != batch_size:
         batches.pop()
     return batches
+
+"""
+Loads a saved Pytorch model to either the CPU or GPU (default)
+"""
+def load_model(model_file_path, use_gpu=True):
+    model = torch.load(model_file_path)
+    if use_gpu:
+        model.cuda()
+    return model
+
+"""
+Converts a NoteSequence into an array of note attributes
+Args:
+    seq (NoteSequence): The NoteSequence object to convert
+
+Returns:
+    (list(tuple)): A list of tuples with the following shape:
+        (velocity, pitch, duration)
+"""
+def seq_to_arr(seq):
+    notes = []
+    for note in seq.notes:
+        duration = round(note.end_time - note.start_time, 4)
+        notes.append([note.velocity, note.pitch, duration])
+    return notes

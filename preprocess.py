@@ -3,22 +3,6 @@ from sklearn.model_selection import train_test_split
 import time, argparse, utils
 
 """
-Converts a NoteSequence into an array of note attributes
-Args:
-    seq (NoteSequence): The NoteSequence object to convert
-
-Returns:
-    (list(tuple)): A list of tuples with the following shape:
-        (velocity, pitch, duration)
-"""
-def seq_to_arr(seq):
-    notes = []
-    for note in seq.notes:
-        duration = round(note.end_time - note.start_time, 4)
-        notes.append([note.velocity, note.pitch, duration])
-    return notes
-
-"""
 Creates subsequences of N notes from the data
 Args:
     seqs: (list(NoteSequence)) - An array of NoteSequence objects
@@ -55,7 +39,7 @@ print(f'Loading {args.input_file} file...')
 sequences = np.load(args.input_file, allow_pickle=True)
 print(f'{len(sequences)} sequences loaded')
 print(f'Creating samples of length {args.seq_length} notes...')
-seq_arrs = [seq_to_arr(seq) for seq in sequences[:,1]]
+seq_arrs = [utils.seq_to_arr(seq) for seq in sequences[:,1]]
 samples = create_subseqs(seq_arrs, args.seq_length)
 print(f'{len(samples)} samples created.')
 print(f'Batching data in batches of {args.batch_size}...')
