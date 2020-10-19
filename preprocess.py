@@ -2,6 +2,13 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 import time, argparse, utils
 
+# things to add to model input:
+# time delta of previous note
+# time delta of next note
+# velocity of previous note
+# velocity of next note?
+# articulation? Investigate Dorico files
+
 """
 Creates subsequences of N notes from the data
 Args:
