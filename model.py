@@ -3,15 +3,13 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 
-# learning rate could be too big or too small
 # scale attributes to 0-1
-# batch data into fixed length sequences
 class VelocityLSTM(nn.Module):
-    def __init__(self, num_features):
+    def __init__(self, num_features: int, activation=None):
         super(VelocityLSTM, self).__init__()
         self.lstm_input_size = num_features
         self.lstm_output_size = num_features
-        self.num_features = num_features
+        self.activation = activation
         self.target_size = 1 # predicting velocity
         self.lstm = nn.LSTM(num_features, num_features, batch_first=True)
         self.hidden = (torch.randn(1, 1, num_features),
@@ -20,9 +18,9 @@ class VelocityLSTM(nn.Module):
 
     def forward(self, batch):
         lstm_out, _ = self.lstm(batch)
-        # target should be 100x1
         target_space = self.hidden2target(lstm_out)
-        # scaling output? weights may get really big
-        # try relu or no activation
-        scores = F.relu(target_space.view(len(batch), -1))
-        return scores
+        if self.activation != None:
+            scores = self.activation(target_space.view(len(batch), -1))
+            return scores
+        else:
+            return target_space.view(len(batch), -1)

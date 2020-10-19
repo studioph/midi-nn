@@ -14,7 +14,7 @@ Args:
 Returns:
     [filename, NoteSequence (bytes)]
 """
-def convert_midi_files(args):
+def convert_midi_files(args: tuple):
     input_dir, files = args
     filemap = []
     for file in files:
@@ -34,7 +34,7 @@ Args:
 Returns:
     A single level array with filename, NoteSequence pairs
 """
-def merge(arrs):
+def merge(arrs: list):
     merged = []
     for arr in arrs:
         merged += arr
@@ -50,7 +50,7 @@ Args:
 Returns:
     A list of length n containing equally sized sublists of arr
 """
-def split(arr, n):
+def split(arr: list, n: int):
     k, m = divmod(len(arr), n)
     return (arr[i * k + min(i, m):(i + 1) * k + min(i + 1, m)] for i in range(n))
 

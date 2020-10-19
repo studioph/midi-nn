@@ -12,7 +12,7 @@ def checkGPU():
 """
 Encodes the real velocities as a one-hot tensor of length 128
 """
-def encode_velocities(arr):
+def encode_velocities(arr: list):
     ohvs = []
     for idx, value in enumerate(arr):
         ohv = torch.zeros(128) # 128 velocities to choose from
@@ -32,7 +32,7 @@ Args:
 
 Returns:
 """
-def batch_data(arr, batch_size):
+def batch_data(arr: list, batch_size: int):
     batches = []
     idxs = range(len(arr) + batch_size)[0::batch_size]
     for idx in range(len(idxs[:-1])):
@@ -45,7 +45,7 @@ def batch_data(arr, batch_size):
 """
 Loads a saved Pytorch model to either the CPU or GPU (default)
 """
-def load_model(model_file_path, use_gpu=True):
+def load_model(model_file_path: str, use_gpu=True):
     model = torch.load(model_file_path)
     if use_gpu:
         model.cuda()
