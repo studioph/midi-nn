@@ -1,10 +1,11 @@
-import torch, utils, sys
+import torch, sys
+import midi_nn.utils as utils
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
-from model import VelocityLSTM
+from midi_nn.model import VelocityLSTM
 import numpy as np
-from dataset import MIDIDataset
+from midi_nn.dataset import MIDIDataset
 
 # give real velocity of previous note, start at 2nd note? or give default value for first
 # warm-up for first 10 notes for example - feed predicted after first N notes
@@ -17,9 +18,8 @@ NUM_FEATURES = 2
 BATCH_SIZE = 64
 SEQ_LENGTH = 100
 NUM_EPOCHS = 10
-MODEL_SAVE_FILE = 'model'
-LOSS_SAVE_FILE = 'losses.npy'
-SCORES_SAVE_FILE = 'scores.npy'
+MODEL_SAVE_FILE = 'data/model'
+LOSS_SAVE_FILE = 'data/losses.npy'
 
 utils.checkGPU()
 
@@ -86,4 +86,3 @@ with torch.no_grad():
     inputs, targets = next(iter(train_loader))
     scores = model(inputs.cuda())
     print(scores)
-    np.save(SCORES_SAVE_FILE, scores.cpu())
