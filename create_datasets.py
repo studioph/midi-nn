@@ -1,6 +1,6 @@
 import numpy as np
-from sklearn.model_selection import train_test_split
 import time, argparse, utils
+from sklearn.model_selection import train_test_split
 
 # things to add to model input:
 # time delta of previous note
@@ -24,21 +24,11 @@ def create_subseqs(seqs, seq_length):
         subseqs += utils.batch_data(seq, seq_length)
     return np.array(subseqs)
 
-"""
-Creates the test and train splits from the real velocities
-"""
-def create_test_train(batches, ratio=0.1):
-    y = [batch[:,:,0] for batch in batches]
-    x = [batch[:,:,1:] for batch in batches]
-    
-    return train_test_split(x, y, test_size=ratio)
- 
-
 parser = argparse.ArgumentParser()
 parser.add_argument("--input_file", dest = "input_file", type=str, help = "Input file containing NoteSequences")
-parser.add_argument("--output_file", dest = "output_file", type=str, help = "Output file to write the train and test datasets to")
+parser.add_argument("--output_dir", dest = "output_dir", type=str, help = "Output directory to write the train and test datasets to")
 parser.add_argument('--seq_length', dest="seq_length", type=int, help="The number of notes per sample")
-parser.add_argument('--batch_size', dest="batch_size", type=int, help="The number of samples per batch")
+parser.add_argument('--test_size', dest="test_size", type=float, default=0.1, help="The ratio of train/test samples")
 args = parser.parse_args()
 
 start = time.time()
@@ -48,14 +38,11 @@ print(f'{len(sequences)} sequences loaded')
 print(f'Creating samples of length {args.seq_length} notes...')
 seq_arrs = [utils.seq_to_arr(seq) for seq in sequences[:,1]]
 samples = create_subseqs(seq_arrs, args.seq_length)
-print(f'{len(samples)} samples created.')
-print(f'Batching data in batches of {args.batch_size}...')
-batches = utils.batch_data(samples, args.batch_size)
-print(f'{len(batches)} batches created')
-print('Creating training and testing sets')
-datasets = create_test_train(batches)
-print(f'Saving to {args.output_file}...')
-np.save(args.output_file, datasets)
+print(f'Creating train and test splits...')
+train, test = train_test_split(samples, test_size=args.test_size)
+print(f'Saving to {args.output_dir}/train.npy and {args.output_dir}/test.npy...')
+np.save(f'{args.output_dir}/train.npy', train)
+np.save(f'{args.output_dir}/test.npy', test)
 end = time.time() - start
 print('Done')
 print(f'Preprocessing took {round(end, 2)}s')

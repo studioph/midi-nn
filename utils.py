@@ -1,5 +1,6 @@
 import numpy as np
 import torch
+from sklearn.model_selection import train_test_split
 
 """
 Ensures GPU is detected
@@ -43,13 +44,20 @@ def batch_data(arr: list, batch_size: int):
     return batches
 
 """
+Creates the test and train splits from the real velocities
+"""
+def create_test_train(batches, ratio=0.1):
+    y = [batch[:,:,0] for batch in batches]
+    x = [batch[:,:,1:] for batch in batches]
+    
+    return train_test_split(x, y, test_size=ratio)
+
+"""
 Loads a saved Pytorch model to either the CPU or GPU (default)
 """
 def load_model(model_file_path: str, use_gpu=True):
     model = torch.load(model_file_path)
-    if use_gpu:
-        model.cuda()
-    return model
+    return model.cuda()
 
 """
 Converts a NoteSequence into an array of note attributes

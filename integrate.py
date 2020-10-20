@@ -12,8 +12,8 @@ def integrate_output(sequence: NoteSequence, results: list):
     for note, result, in zip(sequence.notes, results):
         note.velocity = int(result)
 
-def sequence_midi_files(input_dir: str, output_dir: str, model_file: str, use_gpu=True):
-    model = utils.load_model(model_file, use_gpu)
+def sequence_midi_files(input_dir: str, output_dir: str, model_file: str):
+    model = utils.load_model(model_file)
     files = [file for file in os.listdir(input_dir) if file.lower().endswith('.mid')]
     for file in files:
         print(f'Sequencing {file}...')
@@ -21,8 +21,7 @@ def sequence_midi_files(input_dir: str, output_dir: str, model_file: str, use_gp
         seq_arr = utils.seq_to_arr(notesequence)
         num_features = len(seq_arr[0][1:])
         inputs = torch.tensor(np.array(seq_arr)[:,1:]).view(1, -1, num_features)
-        if use_gpu:
-            inputs = inputs.cuda().float()
+        inputs = inputs.cuda().float()
         with torch.no_grad():
             results = model(inputs)
         integrate_output(notesequence, results.view(-1).tolist())

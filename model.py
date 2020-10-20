@@ -12,8 +12,6 @@ class VelocityLSTM(nn.Module):
         self.activation = activation
         self.target_size = 1 # predicting velocity
         self.lstm = nn.LSTM(num_features, num_features, batch_first=True)
-        self.hidden = (torch.randn(1, 1, num_features),
-                        torch.randn(1, 1, num_features))
         self.hidden2target = nn.Linear(num_features, self.target_size)
 
     def forward(self, batch):
