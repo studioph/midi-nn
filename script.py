@@ -5,6 +5,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 from midi_nn.model import VelocityLSTM
 import numpy as np
+from datetime import datetime
 from midi_nn.dataset import MIDIDataset
 
 # give real velocity of previous note, start at 2nd note? or give default value for first
@@ -15,11 +16,11 @@ from midi_nn.dataset import MIDIDataset
 TRAIN_FILE = 'data/train.npy'
 TEST_FILE = 'data/test.npy'
 NUM_FEATURES = 2
-BATCH_SIZE = 1
+BATCH_SIZE = 64
 SEQ_LENGTH = 100
 NUM_EPOCHS = 10
 MODEL_SAVE_FILE = 'data/model'
-LOSS_SAVE_FILE = 'data/losses.npy'
+LOSS_SAVE_DIR = 'losses'
 LEARNING_RATE = 1e-4
 
 utils.checkGPU()
@@ -87,8 +88,8 @@ def train():
     return train_losses, test_losses
 
 train_losses, test_losses = train()
-utils.plot_losses(train_losses, test_losses, NUM_EPOCHS)
-np.save(LOSS_SAVE_FILE, (train_losses, test_losses))
+utils.plot_losses(train_losses, test_losses, NUM_EPOCHS, LEARNING_RATE, BATCH_SIZE)
+np.save(f'{LOSS_SAVE_DIR}/{BATCH_SIZE}_{LEARNING_RATE}.npy', (train_losses, test_losses))
 torch.save(model, MODEL_SAVE_FILE)
 
 print('Final scores after training:')

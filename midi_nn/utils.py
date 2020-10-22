@@ -2,6 +2,7 @@ import numpy as np
 import torch
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
+from datetime import datetime
 
 """
 Ensures GPU is detected
@@ -79,14 +80,19 @@ def seq_to_arr(seq):
 
 """
 Plots the losses during training and validation
+
+Args:
+    train_losses (numpy.ndarray): The training losses
+    test_losses (numpy.ndarray): The validation losses
 """
-def plot_losses(train_losses, test_losses, num_epochs):
+def plot_losses(train_losses: np.ndarray, test_losses: np.ndarray, num_epochs: int, lr: float, batch_size: int):
     y = [i + 1 for i in range(num_epochs)]
     fig, ax = plt.subplots()
     plt.plot(y, train_losses, label='Train loss')
     plt.plot(y, test_losses, label='Validation loss')
     plt.xlabel('Epoch')
     plt.ylabel('Loss')
+    plt.title(f'Train and validation losss with batch size {batch_size} and learning rate {lr}')
     plt.legend()
-    plt.savefig('data/losses.png')
+    plt.savefig(f'losses/{datetime.now().isoformat}.png')
     plt.show()
