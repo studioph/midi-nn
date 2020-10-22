@@ -1,6 +1,7 @@
 import numpy as np
 import torch
 from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
 
 """
 Ensures GPU is detected
@@ -74,3 +75,18 @@ def seq_to_arr(seq):
         duration = round(note.end_time - note.start_time, 4)
         notes.append([note.velocity, note.pitch, duration])
     return notes
+
+
+"""
+Plots the losses during training and validation
+"""
+def plot_losses(train_losses, test_losses, num_epochs):
+    y = [i + 1 for i in range(num_epochs)]
+    fig, ax = plt.subplots()
+    plt.plot(y, train_losses, label='Train loss')
+    plt.plot(y, test_losses, label='Validation loss')
+    plt.xlabel('Epoch')
+    plt.ylabel('Loss')
+    plt.legend()
+    plt.savefig('data/losses.png')
+    plt.show()

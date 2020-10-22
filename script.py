@@ -15,11 +15,12 @@ from midi_nn.dataset import MIDIDataset
 TRAIN_FILE = 'data/train.npy'
 TEST_FILE = 'data/test.npy'
 NUM_FEATURES = 2
-BATCH_SIZE = 64
+BATCH_SIZE = 1
 SEQ_LENGTH = 100
 NUM_EPOCHS = 10
 MODEL_SAVE_FILE = 'data/model'
 LOSS_SAVE_FILE = 'data/losses.npy'
+LEARNING_RATE = 1e-4
 
 utils.checkGPU()
 
@@ -33,7 +34,8 @@ test_loader = torch.utils.data.DataLoader(test_dataset, shuffle=True, batch_size
 model = VelocityLSTM(NUM_FEATURES, F.relu)
 model.cuda()
 loss_function = nn.MSELoss()
-optimizer = optim.SGD(model.parameters(), lr=1e-4)
+optimizer = optim.SGD(model.parameters(), lr=LEARNING_RATE)
+min_loss = sys.maxsize
 
 def validate():
     print('Validating...')
@@ -52,14 +54,19 @@ def validate():
             pass
 
     mean_loss = np.mean(losses)
+    # if mean_loss < min_loss:
+    #     min_loss = mean_loss
+    #     torch.save(model, MODEL_SAVE_FILE)
     print(f'Loss: {round(mean_loss, 4)}')
     return mean_loss
 
 def train():
     # training loop
-    losses = []
+    train_losses = []
+    test_losses = []
     for epoch in range(NUM_EPOCHS):
         model.train()
+        epoch_losses = []
         print(f'Training epoch {epoch + 1}...')
         for batch, targets in train_loader:
             try:
@@ -68,17 +75,20 @@ def train():
                 loss = loss_function(scores, targets.cuda())
                 loss.backward()
                 optimizer.step()
+                epoch_losses.append(loss.item())
                 pass
             except:
                 e = sys.exc_info()[0]
                 print(e)
                 pass
-        losses.append(validate())
+        train_losses.append(np.mean(epoch_losses))
+        test_losses.append(validate())
     print('Training complete')
-    return losses
+    return train_losses, test_losses
 
-losses = train()
-np.save(LOSS_SAVE_FILE, losses)
+train_losses, test_losses = train()
+utils.plot_losses(train_losses, test_losses, NUM_EPOCHS)
+np.save(LOSS_SAVE_FILE, (train_losses, test_losses))
 torch.save(model, MODEL_SAVE_FILE)
 
 print('Final scores after training:')
