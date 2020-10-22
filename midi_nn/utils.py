@@ -1,11 +1,13 @@
 import numpy as np
 import torch
-from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 from datetime import datetime
 
 """
 Ensures GPU is detected
+
+Raises:
+    EnvironmentError - If the GPU cannot be detected by the ML library
 """
 def checkGPU():
     if not torch.cuda.is_available():
@@ -46,16 +48,10 @@ def batch_data(arr: list, batch_size: int):
     return batches
 
 """
-Creates the test and train splits from the real velocities
-"""
-def create_test_train(batches, ratio=0.1):
-    y = [batch[:,:,0] for batch in batches]
-    x = [batch[:,:,1:] for batch in batches]
-    
-    return train_test_split(x, y, test_size=ratio)
-
-"""
 Loads a saved Pytorch model to either the CPU or GPU (default)
+
+Returns:
+    A Pytorch model bound to the GPU
 """
 def load_model(model_file_path: str, use_gpu=True):
     model = torch.load(model_file_path)
@@ -70,7 +66,7 @@ Returns:
     (list(tuple)): A list of tuples with the following shape:
         (velocity, pitch, duration)
 """
-def seq_to_arr(seq):
+def seq_to_arr(seq: NoteSequence):
     notes = []
     for note in seq.notes:
         duration = round(note.end_time - note.start_time, 4)
@@ -79,11 +75,14 @@ def seq_to_arr(seq):
 
 
 """
-Plots the losses during training and validation
+Plots the losses during training and validation as a line graph using Matplotlib
 
 Args:
     train_losses (numpy.ndarray): The training losses
     test_losses (numpy.ndarray): The validation losses
+    num_epochs (int): The number of epochs the model was trained with
+    lr (float): The learning rate the model was trained with
+    batch_size (int): The batch size the model was trained with
 """
 def plot_losses(train_losses: np.ndarray, test_losses: np.ndarray, num_epochs: int, lr: float, batch_size: int):
     y = [i + 1 for i in range(num_epochs)]
@@ -94,5 +93,5 @@ def plot_losses(train_losses: np.ndarray, test_losses: np.ndarray, num_epochs: i
     plt.ylabel('Loss')
     plt.title(f'Train and validation losss with batch size {batch_size} and learning rate {lr}')
     plt.legend()
-    plt.savefig(f'losses/{datetime.now().isoformat}.png')
+    plt.savefig(f'losses/{datetime.now().isoformat()}.png')
     plt.show()

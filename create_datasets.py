@@ -2,6 +2,7 @@ import numpy as np
 import time, argparse, utils
 from sklearn.model_selection import train_test_split
 
+# TODO
 # things to add to model input:
 # time delta of previous note
 # time delta of next note
@@ -16,9 +17,9 @@ Args:
     seq_length: (int) - The number of notes to include for each subsequence
 
 Returns:
-
+    numpy.ndarray - A Numpy array containing subsequences of length N
 """
-def create_subseqs(seqs, seq_length):
+def create_subseqs(seqs: list, seq_length: int):
     subseqs = []
     for seq in seqs:
         subseqs += utils.batch_data(seq, seq_length)

@@ -32,5 +32,5 @@ def sequence_midi_files(input_dir: str, output_dir: str, model_file: str):
 
 input_dir = 'data/inputs'
 output_dir = 'data/results'
-model_file = 'model'
+model_file = 'model.zip'
 sequence_midi_files(input_dir, output_dir, model_file)
