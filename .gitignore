@@ -2,6 +2,6 @@ data/
 .vscode/
 *.cpr
 *.png
-__pycache__/
+**/__pycache__/
 .ipynb_checkpoints/
 test.py
