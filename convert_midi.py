@@ -41,7 +41,7 @@ if __name__ == '__main__':
     # Parallelize the conversions. Merge the arrays at the end
     with Pool(args.processes) as pool:
         results = pool.map(convert_midi_files, [(args.input_dir, split_files[i]) for i in range(args.processes)])
-    sequences = np.flatten(results)
+    sequences = np.concatenate(results)
 
     # Write sequences to file for later use
     np.save(args.output_file, sequences)
