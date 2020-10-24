@@ -1,28 +1,7 @@
-from note_seq import midi_file_to_note_sequence
 import json, argparse, os, time
 from multiprocessing import Pool
 import numpy as np
-
-"""
-Converts a list of MIDI files into a list of NoteSequences
-
-Args:
-    args (string, iterable<string>): a tuple containing the input
-        directory path and an of MIDI file names
-
-Returns:
-    list(NoteSequence) - A list NoteSequence objects
-"""
-def convert_midi_files(args: tuple):
-    input_dir, files = args
-    sequences = []
-    for file in files:
-        print(f'Converting {file}...')
-        filename = file[:-4]
-        input_path = input_dir + '/' + file
-        sequence = midi_file_to_note_sequence(input_path)
-        sequences.append(sequence)
-    return sequences
+from midi_nn import utils
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -40,7 +19,7 @@ if __name__ == '__main__':
 
     # Parallelize the conversions. Merge the arrays at the end
     with Pool(args.processes) as pool:
-        results = pool.map(convert_midi_files, [(args.input_dir, split_files[i]) for i in range(args.processes)])
+        results = pool.map(utils.convert_midi_files, [(args.input_dir, split_files[i]) for i in range(args.processes)])
     sequences = np.concatenate(results)
 
     # Write sequences to file for later use
