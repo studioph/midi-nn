@@ -20,7 +20,7 @@ args = parser.parse_args()
 
 start = time.time()
 
-print(f'Loading {args.input_file} file...')
+print(f'Loading {args.input_file}...')
 sequences = np.load(args.input_file, allow_pickle=True)
 print(f'{len(sequences)} sequences loaded')
 
