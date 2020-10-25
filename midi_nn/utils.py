@@ -4,6 +4,14 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 from note_seq import midi_file_to_note_sequence
 
+##################################################################
+# A collection of functions used by the different project scripts
+##################################################################
+
+##########
+# GENERAL
+##########
+
 """
 Ensures GPU is detected
 
@@ -14,6 +22,21 @@ def checkGPU():
     if not torch.cuda.is_available():
         raise EnvironmentError('GPU not detected!')
         exit(1)
+
+"""
+Loads a saved Pytorch model to either the CPU or GPU (default)
+
+Returns:
+    A Pytorch model bound to the GPU
+"""
+def load_model(model_file_path: str, use_gpu=True):
+    model = torch.load(model_file_path)
+    return model.cuda()
+
+
+##################
+# MIDI CONVERSION
+##################
 
 """
 Converts a list of MIDI files into a list of NoteSequences
@@ -35,6 +58,10 @@ def convert_midi_files(args: tuple):
         sequence = midi_file_to_note_sequence(input_path)
         sequences.append(sequence)
     return sequences
+
+#####################
+# DATA PREPROCESSING
+#####################
 
 """
 Extracts batches of length N from an array of samples
@@ -79,33 +106,9 @@ def seq_to_arr(seq):
         notes.append([note.velocity, note.pitch, duration])
     return notes
 
-"""
-Encodes the real velocities as a one-hot tensor of length 128
-"""
-def encode_velocities(arr: list):
-    ohvs = []
-    for idx, value in enumerate(arr):
-        ohv = torch.zeros(128) # 128 velocities to choose from
-        ohv[int(value)] = 1
-        ohvs.append(ohv)
-    return torch.cat(ohvs).view(len(ohvs), 1, -1).float()
-
-"""
-Converts array of target arrays into one-hot tensors
-"""
-def encode_dataset(ds):
-    return [encode_velocities(arr) for arr in ds]
-
-"""
-Loads a saved Pytorch model to either the CPU or GPU (default)
-
-Returns:
-    A Pytorch model bound to the GPU
-"""
-def load_model(model_file_path: str, use_gpu=True):
-    model = torch.load(model_file_path)
-    return model.cuda()
-
+##########################
+# TRAINING AND VALIDATION
+##########################
 """
 Plots the losses during training and validation as a line graph using Matplotlib
 
