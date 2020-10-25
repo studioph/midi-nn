@@ -72,7 +72,10 @@ Returns:
 """
 def batch_data(arr: list, batch_size: int):
     leftover = len(arr) % batch_size # discard excess samples
-    batches = np.split(np.array(arr[:-leftover]), int(len(arr) / batch_size))
+    if leftover > 0:
+        arr = arr[:-leftover]
+    subarr = np.array(arr)
+    batches = np.split(subarr, int(len(arr) / batch_size))
     return batches
 
 """
@@ -99,13 +102,17 @@ Args:
 
 Returns:
     (list(tuple)): A list of tuples with the following shape:
-        (velocity, prev note velocity, pitch, duration)
+        (velocity, pitch, duration, prev note velocity)
 """
 def seq_to_arr(seq):
     notes = []
     for idx, note in enumerate(seq.notes[1:], start=1):
         duration = round(note.end_time - note.start_time, 4)
-        notes.append([note.velocity, seq.notes[idx - 1].velocity, note.pitch, duration])
+        notes.append([
+            note.velocity, 
+            note.pitch, 
+            duration,
+            seq.notes[idx - 1].velocity])
     return notes
 
 ##########################

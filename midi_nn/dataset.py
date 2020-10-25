@@ -9,7 +9,7 @@ Reads in a file containing NoteSequence subsequences, and creates x,y train/test
 """
 class MIDIDataset(torch.utils.data.Dataset):
     def __init__(self, data_file: str):
-        self.samples = np.load(data_file, allow_pickle=True)
+        self.samples = np.load(data_file)
 
     def __len__(self):
         return len(self.samples)
