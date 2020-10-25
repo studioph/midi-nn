@@ -9,9 +9,7 @@ from datetime import datetime
 from midi_nn.dataset import MIDIDataset
 
 # TODO
-# give real velocity of previous note, start at 2nd note? or give default value for first
 # warm-up for first 10 notes for example - feed predicted after first N notes
-# start without batches, then add batching
 
 utils.checkGPU() # throws an error if the GPU isn't detected
 
@@ -20,13 +18,13 @@ utils.checkGPU() # throws an error if the GPU isn't detected
 ####################
 TRAIN_FILE = 'data/train.npy'
 TEST_FILE = 'data/test.npy'
-NUM_FEATURES = 2
-BATCH_SIZE = 1
+NUM_FEATURES = 3
+BATCH_SIZE = 128
 SEQ_LENGTH = 100
-NUM_EPOCHS = 50
+NUM_EPOCHS = 25
 MODEL_SAVE_FILE = 'model.zip'
 LOSS_SAVE_DIR = 'losses'
-LEARNING_RATE = 1e-5
+LEARNING_RATE = 1e-4
 
 ##################################
 # define Datasets and Dataloaders
@@ -56,16 +54,10 @@ def validate():
     model.eval()
     losses = []
     for batch, targets in test_loader:
-        try:
-            model.zero_grad()
-            output= model(batch.cuda())
-            loss = loss_function(output,targets.cuda())
-            losses.append(loss.item())
-            pass
-        except:
-            e = sys.exc_info()[0]
-            print(e)
-            pass
+        model.zero_grad()
+        output= model(batch.cuda())
+        loss = loss_function(output,targets.cuda())
+        losses.append(loss.item())
     mean_loss = np.mean(losses)
     # getting undefined variable error (min_loss) here for some reason even though it is defined above
     # if mean_loss < min_loss:
@@ -88,18 +80,12 @@ def train():
         epoch_losses = []
         print(f'Training epoch {epoch + 1}...')
         for batch, targets in train_loader:
-            try:
-                model.zero_grad()
-                scores = model(batch.cuda())
-                loss = loss_function(scores, targets.cuda())
-                loss.backward()
-                optimizer.step()
-                epoch_losses.append(loss.item())
-                pass
-            except:
-                e = sys.exc_info()[0]
-                print(e)
-                pass
+            model.zero_grad()
+            scores = model(batch.cuda())
+            loss = loss_function(scores, targets.cuda())
+            loss.backward()
+            optimizer.step()
+            epoch_losses.append(loss.item())
         train_losses.append(np.mean(epoch_losses))
         test_losses.append(validate())
     print('Training complete')
