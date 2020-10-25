@@ -91,19 +91,21 @@ def create_subseqs(seqs: list, seq_length: int):
     return np.array(subseqs)
 
 """
-Converts a NoteSequence into an array of note attributes
+Converts a NoteSequence into an array of note attributes. 
+Note: starts with the second note of the sequence.
+
 Args:
     seq (NoteSequence): The NoteSequence object to convert
 
 Returns:
     (list(tuple)): A list of tuples with the following shape:
-        (velocity, pitch, duration)
+        (velocity, prev note velocity, pitch, duration)
 """
 def seq_to_arr(seq):
     notes = []
-    for note in seq.notes:
+    for idx, note in enumerate(seq.notes[1:], start=1):
         duration = round(note.end_time - note.start_time, 4)
-        notes.append([note.velocity, note.pitch, duration])
+        notes.append([note.velocity, seq.notes[idx - 1].velocity, note.pitch, duration])
     return notes
 
 ##########################
