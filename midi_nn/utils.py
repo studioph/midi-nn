@@ -94,6 +94,21 @@ def create_subseqs(seqs: list, seq_length: int):
     return np.array(subseqs)
 
 """
+Gets the delta between 2 note objects, either 2 different notes, or the duration of one.
+Args:
+    args: (list(NoteSequence.Note)) - A list of one or more Notes
+Returns:
+    float - The delta between the notes
+"""
+def get_note_delta(*args):
+    # Return note duration if single note passed
+    if len(args) == 1:
+        return args[0].end_time - args[0].start_time
+    # Otherwise return previous/next note delta
+    else:
+        return args[1].start_time - args[0].end_time
+
+"""
 Converts a NoteSequence into an array of note attributes. 
 Note: starts with the second note of the sequence.
 
@@ -102,19 +117,25 @@ Args:
 
 Returns:
     (list(tuple)): A list of tuples with the following shape:
-        (velocity, pitch, duration, prev note velocity, prev note delta)
+        (velocity, pitch, duration, 
+            prev velocity, prev pitch, prev duration, prev delta,
+            next velocity, next pitch, next duration, next delta)
 """
 def seq_to_arr(seq):
     notes = []
-    for idx, note in enumerate(seq.notes[1:], start=1):
-        duration = note.end_time - note.start_time
-        prev_delta = note.start_time - seq.notes[idx - 1].end_time
-        notes.append([
-            note.velocity, 
-            note.pitch, 
-            duration,
-            seq.notes[idx - 1].velocity,
-            prev_delta])
+    for idx, note in enumerate(seq.notes):
+        prev_note = seq.notes[idx - 1]
+        next_note = seq.notes[(idx + 1) % len(seq.notes)]
+
+        duration = get_note_delta(note)
+        prev_duration = get_note_delta(prev_note)
+        next_duration = get_note_delta(next_note)
+        prev_delta = get_note_delta(prev_note, note)
+        next_delta = get_note_delta(note, next_note)
+
+        notes.append([note.velocity, note.pitch, duration,
+            prev_note.velocity, prev_note.pitch, prev_duration, prev_delta,
+            next_note.velocity, next_note.pitch, next_duration, next_delta])
     return notes
 
 ##########################
