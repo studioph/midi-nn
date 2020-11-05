@@ -1,4 +1,4 @@
-<REAPER_PROJECT 0.1 "6.14/linux64" 1603978871
+<REAPER_PROJECT 0.1 "6.14/linux64" 1603980276
   RIPPLE 0
   GROUPOVERRIDE 0 0 0
   AUTOXFADE 1
@@ -14,8 +14,8 @@
   TIMEMODE 1 5 -1 30 0 0 -1
   VIDEO_CONFIG 0 0 256
   PANMODE 3
-  CURSOR 1
-  ZOOM 100 0 0
+  CURSOR 7
+  ZOOM 135.11498051956664 0 0
   VZOOMEX 6 0
   USE_REC_CFG 0
   RECMODE 1
@@ -28,13 +28,13 @@
   <APPLYFX_CFG
   >
   RENDER_FILE ""
-  RENDER_PATTERN ""
-  RENDER_FMT 0 2 0
+  RENDER_PATTERN $track
+  RENDER_FMT 0 2 44100
   RENDER_1X 0
-  RENDER_RANGE 1 0 0 18 1000
+  RENDER_RANGE 4 0 0 18 1000
   RENDER_RESAMPLE 3 0 1
   RENDER_ADDTOPROJ 0
-  RENDER_STEMS 0
+  RENDER_STEMS 32
   RENDER_DITHER 0
   TIMELOCKMODE 1
   TEMPOENVLOCKMODE 1
@@ -43,6 +43,7 @@
   TAKELANE 1
   SAMPLERATE 44100 0 0
   <RENDER_CFG
+    bDNwbYAAAAAAAAAAAgAAAP////8EAAAAgAAAAAAAAAA=
   >
   LOCK 1
   <METRONOME 6 2
@@ -55,8 +56,8 @@
   GLOBAL_AUTO -1
   TEMPO 120 4 4
   PLAYRATE 1 0 0.25 4
-  SELECTION 0 0
-  SELECTION2 0 0
+  SELECTION 1 10.5
+  SELECTION2 1 10.5
   MASTERAUTOMODE 0
   MASTERTRACKHEIGHT 0 0
   MASTERPEAKCOL 16576
@@ -91,14 +92,14 @@
     BEAT -1
     AUTOMODE 0
     VOLPAN 0.49866990604774 0 -1 -1 1
-    MUTESOLO 0 2 0
+    MUTESOLO 0 0 0
     IPHASE 0
     PLAYOFFS 0 1
     ISBUS 0 0
     BUSCOMP 0 0 0 0 0
     SHOWINMIX 1 0.6667 0.5 1 0.5 -1 -1 -1
     FREEMODE 0
-    SEL 0
+    SEL 1
     REC 1 5088 1 0 0 0 0
     VU 2
     TRACKHEIGHT 0 0 0 0 -1 0
@@ -116,7 +117,7 @@
       DOCKED 0
       BYPASS 0 0 0
       <VST "VSTi: Carla-Rack (falkTX)" CarlaRack.so 0 "" 1131572323<56535443726C636361726C612D726163> ""
-        Y2xyQ+5e7f4CAAAAAQAAAAAAAAACAAAAAAAAAAIAAAABAAAAAAAAAAIAAAAAAAAAYAUAAAEAAAAAABAA
+        Y2xyQ+5e7f4CAAAAAQAAAAAAAAACAAAAAAAAAAIAAAABAAAAAAAAAAIAAAAAAAAAeQUAAAEAAAAAABAA
         PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4KPCFET0NUWVBFIENBUkxBLVBST0pFQ1Q+CjxDQVJMQS1QUk9KRUNUIFZFUlNJT049JzIuMic+CiA8
         RW5naW5lU2V0dGluZ3M+CiAgPEZvcmNlU3RlcmVvPmZhbHNlPC9Gb3JjZVN0ZXJlbz4KICA8UHJlZmVyUGx1Z2luQnJpZGdlcz5mYWxzZTwvUHJlZmVyUGx1Z2luQnJp
         ZGdlcz4KICA8UHJlZmVyVWlCcmlkZ2VzPnRydWU8L1ByZWZlclVpQnJpZGdlcz4KICA8VUlzQWx3YXlzT25Ub3A+ZmFsc2U8L1VJc0Fsd2F5c09uVG9wPgogIDxNYXhQ
@@ -130,8 +131,8 @@
         cy9zZno6L3Vzci9zaGFyZS9zb3VuZHMvc2Z6PC9TRlpfUEFUSD4KIDwvRW5naW5lU2V0dGluZ3M+CgogPCEtLSBVcHJpZ2h0UGlhbm9LVy0yMDE5MDcwMyAtLT4KIDxQ
         bHVnaW4+CiAgPEluZm8+CiAgIDxUeXBlPlNGWjwvVHlwZT4KICAgPE5hbWU+VXByaWdodFBpYW5vS1ctMjAxOTA3MDM8L05hbWU+CiAgIDxGaWxlbmFtZT4vaG9tZS9w
         YXVsL29wdC9VcHJpZ2h0UGlhbm9LVy1TRlotMjAxOTA3MDMvVXByaWdodFBpYW5vS1ctMjAxOTA3MDMuc2Z6PC9GaWxlbmFtZT4KICA8L0luZm8+CgogIDxEYXRhPgog
-        ICA8QWN0aXZlPlllczwvQWN0aXZlPgogICA8Q29udHJvbENoYW5uZWw+MTwvQ29udHJvbENoYW5uZWw+CiAgIDxPcHRpb25zPjB4MWYwPC9PcHRpb25zPgogIDwvRGF0
-        YT4KIDwvUGx1Z2luPgo8L0NBUkxBLVBST0pFQ1Q+CgA=
+        ICA8QWN0aXZlPlllczwvQWN0aXZlPgogICA8Vm9sdW1lPjEuMjc8L1ZvbHVtZT4KICAgPENvbnRyb2xDaGFubmVsPjE8L0NvbnRyb2xDaGFubmVsPgogICA8T3B0aW9u
+        cz4weDFmMDwvT3B0aW9ucz4KICA8L0RhdGE+CiA8L1BsdWdpbj4KPC9DQVJMQS1QUk9KRUNUPgoA
         AERlZmF1bHQAEAAAAA==
       >
       PRESETNAME Default
@@ -142,7 +143,7 @@
     <ITEM
       POSITION 0
       SNAPOFFS 0
-      LENGTH 338.5
+      LENGTH 1
       LOOP 1
       ALLTAKES 0
       FADEIN 1 0 0 1 0 0
@@ -161,6 +162,689 @@
         HASDATA 1 384 QN
         CCINTERP 32
         POOLEDEVTS {8E00A029-F7A8-A443-89D2-7B3D389E5189}
+        <X 0 0 0 0 3 "Sonata Op. 90--Jean Abdelmoula     "
+          /wNTb25hdGEgT3AuIDkwLS1KZWFuIEFiZGVsbW91bGEgICAgIA==
+        >
+        <X 0 0 0 0 1 "2008 e-Piano Junior Competition virtual audition round"
+          /wEyMDA4IGUtUGlhbm8gSnVuaW9yIENvbXBldGl0aW9uIHZpcnR1YQ==
+          bCBhdWRpdGlvbiByb3VuZA==
+        >
+        <X 0 0 0 0 1 "recorded January and February 2008"
+          /wFyZWNvcmRlZCBKYW51YXJ5IGFuZCBGZWJydWFyeSAyMDA4
+        >
+        <X 0 0 0 0 1 http://www.piano-e-competition.com/
+          /wFodHRwOi8vd3d3LnBpYW5vLWUtY29tcGV0aXRpb24uY29tLw==
+        >
+        <X 0 0 0 0 1 "File processed for distribution by software from Zenph Studios, Inc., http://www.zenph.com"
+          /wFGaWxlIHByb2Nlc3NlZCBmb3IgZGlzdHJpYnV0aW9uIGJ5IHNvZg==
+          dHdhcmUgZnJvbSBaZW5waCBTdHVkaW9zLCBJbmMuLCBodHRwOi8vdw==
+          d3cuemVucGguY29t
+        >
+        <X 0 0 0 0 4 "Yamaha Disklavier Pro Mark IV concert grand piano, model DCFIIISM4PRO"
+          /wRZYW1haGEgRGlza2xhdmllciBQcm8gTWFyayBJViBjb25jZXJ0IA==
+          Z3JhbmQgcGlhbm8sIG1vZGVsIERDRklJSVNNNFBSTw==
+        >
+        <X 0 0
+          8ENxfhUAAgIBBwsOBAcJCwUFCQoG9w==
+        >
+        <X 0 0
+          8H5/CQH3
+        >
+        <X 1 0
+          8EMQTAAAfgD3
+        >
+        <X 1 0
+          8EMQTAgJBwH3
+        >
+        E 1 b0 00 00
+        E 0 b1 00 00
+        E 0 b2 00 00
+        E 0 b3 00 00
+        E 0 b4 00 00
+        E 0 b5 00 00
+        E 0 b6 00 00
+        E 0 b7 00 00
+        E 0 b8 00 00
+        E 0 b9 00 7f
+        E 0 ba 00 00
+        E 0 bb 00 00
+        E 0 bc 00 00
+        E 0 bd 00 00
+        E 0 be 00 00
+        E 0 bf 00 00
+        E 1 b0 20 00
+        E 0 b1 20 00
+        E 0 b2 20 00
+        E 0 b3 20 00
+        E 0 b4 20 00
+        E 0 b5 20 00
+        E 0 b6 20 00
+        E 0 b7 20 00
+        E 0 b8 20 00
+        E 0 b9 20 00
+        E 0 ba 20 00
+        E 0 bb 20 00
+        E 0 bc 20 00
+        E 0 bd 20 00
+        E 0 be 20 00
+        E 0 bf 20 00
+        E 1 c0 00 00
+        E 0 c1 00 00
+        E 0 c2 00 00
+        E 0 c3 00 00
+        E 0 c4 00 00
+        E 0 c5 00 00
+        E 0 c6 00 00
+        E 0 c7 00 00
+        E 0 c8 00 00
+        E 0 c9 00 00
+        E 0 ca 00 00
+        E 0 cb 00 00
+        E 0 cc 00 00
+        E 0 cd 00 00
+        E 0 ce 00 00
+        E 0 cf 00 00
+        E 1 b0 07 64
+        E 0 b1 07 64
+        E 0 b2 07 64
+        E 0 b3 07 64
+        E 0 b4 07 64
+        E 0 b5 07 64
+        E 0 b6 07 64
+        E 0 b7 07 64
+        E 0 b8 07 64
+        E 0 b9 07 64
+        E 0 ba 07 64
+        E 0 bb 07 64
+        E 0 bc 07 64
+        E 0 bd 07 64
+        E 0 be 07 64
+        E 0 bf 07 64
+        E 762 b0 7b 00
+        CCINTERP 32
+        CHASE_CC_TAKEOFFS 1
+        GUID {13E35274-B22F-8DCD-BC8F-3FB8431D99B4}
+        IGNTEMPO 0 120 4 4
+        SRCCOLOR 0
+        VELLANE -1 202 0
+        CFGEDITVIEW -7110.521457 0.005641 30 12 0 -1 0 0 0 0.5
+        KEYSNAP 0
+        TRACKSEL 0
+        EVTFILTER 0 -1 -1 -1 -1 0 0 0 0 -1 -1 -1 -1 0 -1 0 -1 -1
+        CFGEDIT 1 1 0 1 0 0 1 1 1 1 1 0.125 0 54 1669 1500 0 0 0 0 0 0 0 0 0 0.5 0 0 1 64
+      >
+    >
+    <ITEM
+      POSITION 1
+      SNAPOFFS 0
+      LENGTH 9.5
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0
+      FADEOUT 1 0 0 1 0 0
+      MUTE 0 0
+      SEL 1
+      IGUID {52B6A835-24F1-C615-A87F-C38F2C04E5F3}
+      IID 9
+      NAME "Sonata Op. 90--Jean Abdelmoula      - Abdelmola01.mid"
+      VOLPAN 1 0 1 -1
+      SOFFS 1 2
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {CD43A4F1-6CEC-6D86-38F9-549EE7EABCEE}
+      <SOURCE MIDI
+        HASDATA 1 384 QN
+        CCINTERP 32
+        POOLEDEVTS {5AA1128B-22F6-AE41-A399-D7028E025DEA}
+        <X 0 0 0 0 3 "Sonata Op. 90--Jean Abdelmoula     "
+          /wNTb25hdGEgT3AuIDkwLS1KZWFuIEFiZGVsbW91bGEgICAgIA==
+        >
+        <X 0 0 0 0 1 "2008 e-Piano Junior Competition virtual audition round"
+          /wEyMDA4IGUtUGlhbm8gSnVuaW9yIENvbXBldGl0aW9uIHZpcnR1YQ==
+          bCBhdWRpdGlvbiByb3VuZA==
+        >
+        <X 0 0 0 0 1 "recorded January and February 2008"
+          /wFyZWNvcmRlZCBKYW51YXJ5IGFuZCBGZWJydWFyeSAyMDA4
+        >
+        <X 0 0 0 0 1 http://www.piano-e-competition.com/
+          /wFodHRwOi8vd3d3LnBpYW5vLWUtY29tcGV0aXRpb24uY29tLw==
+        >
+        <X 0 0 0 0 1 "File processed for distribution by software from Zenph Studios, Inc., http://www.zenph.com"
+          /wFGaWxlIHByb2Nlc3NlZCBmb3IgZGlzdHJpYnV0aW9uIGJ5IHNvZg==
+          dHdhcmUgZnJvbSBaZW5waCBTdHVkaW9zLCBJbmMuLCBodHRwOi8vdw==
+          d3cuemVucGguY29t
+        >
+        <X 0 0 0 0 4 "Yamaha Disklavier Pro Mark IV concert grand piano, model DCFIIISM4PRO"
+          /wRZYW1haGEgRGlza2xhdmllciBQcm8gTWFyayBJViBjb25jZXJ0IA==
+          Z3JhbmQgcGlhbm8sIG1vZGVsIERDRklJSVNNNFBSTw==
+        >
+        <X 0 0
+          8ENxfhUAAgIBBwsOBAcJCwUFCQoG9w==
+        >
+        <X 0 0
+          8H5/CQH3
+        >
+        <X 1 0
+          8EMQTAAAfgD3
+        >
+        <X 1 0
+          8EMQTAgJBwH3
+        >
+        E 1 b0 00 00
+        E 0 b1 00 00
+        E 0 b2 00 00
+        E 0 b3 00 00
+        E 0 b4 00 00
+        E 0 b5 00 00
+        E 0 b6 00 00
+        E 0 b7 00 00
+        E 0 b8 00 00
+        E 0 b9 00 7f
+        E 0 ba 00 00
+        E 0 bb 00 00
+        E 0 bc 00 00
+        E 0 bd 00 00
+        E 0 be 00 00
+        E 0 bf 00 00
+        E 1 b0 20 00
+        E 0 b1 20 00
+        E 0 b2 20 00
+        E 0 b3 20 00
+        E 0 b4 20 00
+        E 0 b5 20 00
+        E 0 b6 20 00
+        E 0 b7 20 00
+        E 0 b8 20 00
+        E 0 b9 20 00
+        E 0 ba 20 00
+        E 0 bb 20 00
+        E 0 bc 20 00
+        E 0 bd 20 00
+        E 0 be 20 00
+        E 0 bf 20 00
+        E 1 c0 00 00
+        E 0 c1 00 00
+        E 0 c2 00 00
+        E 0 c3 00 00
+        E 0 c4 00 00
+        E 0 c5 00 00
+        E 0 c6 00 00
+        E 0 c7 00 00
+        E 0 c8 00 00
+        E 0 c9 00 00
+        E 0 ca 00 00
+        E 0 cb 00 00
+        E 0 cc 00 00
+        E 0 cd 00 00
+        E 0 ce 00 00
+        E 0 cf 00 00
+        E 1 b0 07 64
+        E 0 b1 07 64
+        E 0 b2 07 64
+        E 0 b3 07 64
+        E 0 b4 07 64
+        E 0 b5 07 64
+        E 0 b6 07 64
+        E 0 b7 07 64
+        E 0 b8 07 64
+        E 0 b9 07 64
+        E 0 ba 07 64
+        E 0 bb 07 64
+        E 0 bc 07 64
+        E 0 bd 07 64
+        E 0 be 07 64
+        E 0 bf 07 64
+        E 1124 90 34 50
+        E 2 90 43 51
+        E 0 90 28 4a
+        E 1 90 37 55
+        E 5 90 3b 4c
+        E 9 90 40 42
+        E 8 80 37 42
+        E 2 80 34 40
+        E 4 80 28 40
+        E 4 80 3b 40
+        E 4 80 43 3d
+        E 5 80 40 43
+        E 204 b0 40 43
+        E 13 90 43 58
+        E 2 b0 40 5c
+        E 7 90 3b 4c
+        E 0 90 34 51
+        E 0 90 37 49
+        E 2 90 28 4d
+        E 5 b0 40 7f
+        E 26 80 34 40
+        E 0 80 28 43
+        E 4 80 37 40
+        E 2 80 3b 40
+        E 9 90 40 0f
+        E 44 80 40 28
+        E 93 a0 34 00
+        E 196 90 42 4e
+        E 25 80 43 3c
+        E 24 b0 40 5d
+        E 15 b0 40 4a
+        E 4 80 42 3e
+        E 11 b0 40 00
+        E 20 90 40 53
+        E 3 90 37 56
+        E 6 90 28 44
+        E 3 90 34 4f
+        E 33 80 34 3e
+        E 6 80 28 3e
+        E 16 80 37 3e
+        E 37 80 40 3d
+        E 9 b0 40 26
+        E 15 b0 40 40
+        E 15 b0 40 41
+        E 30 b0 40 40
+        E 15 b0 40 32
+        E 15 b0 40 00
+        E 59 b0 43 08
+        E 34 90 45 49
+        E 2 b0 43 0a
+        E 6 90 39 41
+        E 11 90 32 3b
+        E 1 90 42 42
+        E 1 90 26 35
+        E 11 b0 43 0c
+        E 15 b0 40 42
+        E 15 b0 40 4a
+        E 7 80 39 3f
+        E 8 b0 40 52
+        E 3 80 26 3c
+        E 12 b0 40 59
+        E 10 80 32 3e
+        E 5 b0 40 5e
+        E 15 b0 40 63
+        E 0 80 45 3c
+        E 7 80 42 3d
+        E 8 b0 40 67
+        E 14 b0 40 6b
+        E 15 b0 40 6e
+        E 15 b0 40 70
+        E 30 b0 43 0f
+        E 30 b0 43 14
+        E 15 b0 43 19
+        E 15 b0 43 1e
+        E 14 b0 43 27
+        E 15 b0 43 36
+        E 15 b0 40 6d
+        E 0 b0 43 4c
+        E 15 b0 40 6a
+        E 0 b0 43 6a
+        E 15 b0 40 64
+        E 0 b0 43 7f
+        E 14 b0 40 5b
+        E 15 b0 40 52
+        E 15 b0 40 48
+        E 15 b0 40 40
+        E 15 b0 40 00
+        E 192 b0 40 3c
+        E 14 b0 40 40
+        E 4 90 45 2f
+        E 11 b0 40 42
+        E 2 90 3e 26
+        E 2 90 42 2c
+        E 11 b0 40 44
+        E 15 b0 40 46
+        E 15 b0 40 49
+        E 15 b0 40 4b
+        E 1 80 3e 38
+        E 14 b0 40 4d
+        E 6 80 42 33
+        E 9 b0 40 4e
+        E 8 80 45 36
+        E 14 b0 40 4f
+        E 15 b0 40 50
+        E 15 b0 40 50
+        E 15 b0 40 51
+        E 14 b0 40 52
+        E 15 b0 40 53
+        E 15 b0 40 54
+        E 15 b0 40 55
+        E 15 b0 40 55
+        E 14 b0 40 56
+        E 30 b0 40 56
+        E 23 90 45 2c
+        E 7 90 3e 25
+        E 1 b0 40 56
+        E 7 90 3c 29
+        E 6 90 42 27
+        E 2 b0 40 54
+        E 14 b0 40 4f
+        E 15 b0 40 47
+        E 15 b0 40 00
+        E 44 b0 40 37
+        E 15 b0 40 45
+        E 15 b0 40 4b
+        E 15 b0 40 51
+        E 3 80 3c 30
+        E 11 b0 40 54
+        E 6 80 45 3b
+        E 5 80 3e 24
+        E 4 b0 40 56
+        E 15 b0 40 58
+        E 15 b0 40 5a
+        E 15 b0 40 5b
+        E 1 80 42 1f
+        E 14 b0 40 5c
+        E 15 b0 40 5c
+        E 15 b0 40 5d
+        E 44 b0 40 5d
+        E 89 b0 40 5c
+        E 15 b0 40 58
+        E 13 90 43 27
+        E 1 b0 40 52
+        E 5 90 3e 22
+        E 3 90 3b 26
+        E 7 b0 40 4a
+        E 15 b0 40 40
+        E 14 b0 40 00
+        E 42 80 43 32
+        E 44 90 45 2a
+        E 3 80 3e 20
+        E 6 90 42 24
+        E 9 90 3c 2a
+        E 6 80 3b 22
+        E 5 90 39 1f
+        E 66 80 39 36
+        E 3 80 3c 32
+        E 1 b0 40 42
+        E 15 b0 40 46
+        E 8 80 45 36
+        E 6 b0 40 49
+        E 5 80 42 35
+        E 10 b0 40 4a
+        E 15 b0 40 4c
+        E 15 b0 40 4d
+        E 15 b0 40 4f
+        E 14 b0 40 51
+        E 16 b0 40 52
+        E 15 b0 40 54
+        E 15 b0 40 55
+        E 15 b0 40 56
+        E 44 b0 40 56
+        E 15 b0 40 53
+        E 0 90 3b 22
+        E 2 90 47 29
+        E 12 90 43 22
+        E 1 b0 40 4e
+        E 14 b0 40 44
+        E 9 90 37 19
+        E 6 b0 40 00
+        E 60 b0 40 29
+        E 15 b0 40 43
+        E 15 b0 40 48
+        E 0 b0 43 7c
+        E 1 80 43 3b
+        E 12 80 3b 34
+        E 2 b0 40 4c
+        E 0 b0 43 73
+        E 1 80 47 3c
+        E 14 b0 40 4f
+        E 0 b0 43 69
+        E 2 80 37 29
+        E 12 b0 40 52
+        E 0 b0 43 58
+        E 15 b0 40 55
+        E 0 b0 43 40
+        E 15 b0 40 56
+        E 0 b0 43 1b
+        E 14 b0 40 59
+        E 0 b0 43 00
+        E 15 b0 40 5b
+        E 15 b0 40 5d
+        E 15 b0 40 60
+        E 59 b0 40 5c
+        E 15 b0 40 53
+        E 15 b0 40 46
+        E 14 b0 40 00
+        E 166 90 47 55
+        E 2 90 3b 57
+        E 5 90 3e 50
+        E 2 90 37 51
+        E 2 90 43 4a
+        E 1 90 2b 4c
+        E 13 80 3b 43
+        E 8 80 3e 44
+        E 3 80 37 41
+        E 2 80 2b 40
+        E 0 80 43 42
+        E 6 80 47 3f
+        E 115 90 3d 18
+        E 39 80 3d 1e
+        E 46 b0 40 3e
+        E 14 b0 40 58
+        E 10 90 47 5d
+        E 5 b0 40 7f
+        E 0 90 37 53
+        E 1 90 3b 4f
+        E 3 90 2b 52
+        E 3 90 3e 49
+        E 17 80 37 42
+        E 5 80 3b 41
+        E 8 90 43 21
+        E 0 80 2b 40
+        E 15 80 3e 3f
+        E 18 80 43 2d
+        E 253 80 47 3a
+        E 29 90 45 55
+        E 62 80 45 3e
+        E 23 b0 40 60
+        E 15 b0 40 4c
+        E 14 b0 40 00
+        E 1 90 43 5a
+        E 5 90 3b 56
+        E 9 90 2b 4e
+        E 3 90 1f 46
+        E 27 80 2b 3e
+        E 9 80 3b 3e
+        E 2 80 1f 3f
+        E 19 b0 40 44
+        E 10 80 43 40
+        E 5 b0 40 48
+        E 14 b0 40 49
+        E 15 b0 40 47
+        E 15 b0 40 42
+        E 15 b0 40 00
+        E 135 90 49 4f
+        E 3 90 3d 4c
+        E 7 90 46 4c
+        E 3 90 2a 3d
+        E 1 b0 40 17
+        E 8 90 1e 36
+        E 7 b0 40 46
+        E 8 80 3d 3e
+        E 6 b0 40 4b
+        E 15 b0 40 50
+        E 4 80 1e 3f
+        E 6 80 2a 3b
+        E 5 b0 40 56
+        E 15 b0 40 5b
+        E 8 80 46 3d
+        E 2 80 49 3c
+        E 5 b0 40 61
+        E 14 b0 40 66
+        E 15 b0 40 6a
+        E 15 b0 40 6c
+        E 15 b0 40 6e
+        E 29 b0 40 71
+        E 15 b0 40 75
+        E 15 b0 40 7b
+        E 14 b0 40 7f
+        E 104 b0 40 6f
+        E 23 b0 40 60
+        E 15 b0 40 53
+        E 14 b0 40 46
+        E 15 b0 40 00
+        E 201 90 49 32
+        E 4 90 42 24
+        E 3 b0 40 33
+        E 3 90 46 22
+        E 12 b0 40 41
+        E 14 b0 40 44
+        E 15 b0 40 46
+        E 15 b0 40 48
+        E 15 b0 40 4a
+        E 9 80 42 34
+        E 6 b0 40 4c
+        E 14 b0 40 4e
+        E 3 80 49 35
+        E 13 b0 40 50
+        E 9 80 46 24
+        E 6 b0 40 52
+        E 15 b0 40 54
+        E 15 b0 40 56
+        E 15 b0 40 57
+        E 14 b0 40 59
+        E 0 b0 43 08
+        E 15 b0 40 5a
+        E 15 b0 40 5b
+        E 0 b0 43 0a
+        E 15 b0 40 5c
+        E 14 b0 43 0d
+        E 15 b0 43 10
+        E 15 b0 43 13
+        E 15 b0 43 15
+        E 6 90 49 2a
+        E 4 90 46 26
+        E 5 b0 40 5b
+        E 0 b0 43 19
+        E 4 90 42 22
+        E 3 90 40 27
+        E 7 b0 40 59
+        E 0 b0 43 1f
+        E 15 b0 40 53
+        E 0 b0 43 2c
+        E 15 b0 40 49
+        E 0 b0 43 3e
+        E 15 b0 40 2e
+        E 0 b0 43 54
+        E 15 b0 40 00
+        E 0 b0 43 6e
+        E 14 b0 43 7f
+        E 31 b0 40 44
+        E 14 b0 40 49
+        E 15 b0 40 4f
+        E 15 b0 40 55
+        E 9 80 40 25
+        E 14 b0 40 59
+        E 14 b0 40 5c
+        E 3 80 42 24
+        E 12 b0 40 5f
+        E 12 80 49 25
+        E 3 b0 40 62
+        E 15 b0 40 65
+        E 8 80 46 20
+        E 6 b0 40 68
+        E 15 b0 40 6a
+        E 30 b0 40 6c
+        E 113 90 42 23
+        E 5 b0 40 6a
+        E 8 90 47 27
+        E 7 b0 40 66
+        E 4 90 3e 25
+        E 11 b0 40 60
+        E 14 b0 40 59
+        E 15 b0 40 51
+        E 15 b0 40 47
+        E 15 b0 40 3d
+        E 8 80 3e 34
+        E 2 80 47 2f
+        E 5 b0 40 00
+        E 58 90 46 16
+        E 6 90 49 26
+        E 4 90 40 1b
+        E 15 80 42 21
+        E 4 90 3d 24
+        E 62 b0 40 42
+        E 14 b0 40 47
+        E 10 80 3d 38
+        E 5 b0 40 4b
+        E 7 80 49 34
+        E 8 b0 40 4e
+        E 15 b0 40 51
+        E 12 80 40 22
+        E 3 b0 40 54
+        E 2 80 46 28
+        E 13 b0 40 56
+        E 15 b0 40 58
+        E 15 b0 40 5b
+        E 15 b0 40 5d
+        E 14 b0 40 5e
+        E 15 b0 40 60
+        E 30 b0 40 62
+        E 90 90 4a 25
+        E 6 90 3b 1f
+        E 1 90 47 19
+        E 1 90 3e 1b
+        E 27 b0 40 5f
+        E 15 b0 40 5a
+        E 15 b0 40 51
+        E 15 b0 40 46
+        E 15 b0 40 00
+        E 89 b0 40 40
+        E 14 b0 40 45
+        E 15 b0 40 48
+        E 15 b0 40 4b
+        E 6 80 47 2a
+        E 7 80 3e 24
+        E 2 b0 40 4e
+        E 4 80 4a 3a
+        E 11 b0 40 50
+        E 1 80 3b 27
+        E 13 b0 40 52
+        E 15 b0 40 54
+        E 15 b0 40 55
+        E 15 b0 40 57
+        E 14 b0 40 57
+        E 15 b0 40 58
+        E 89 b0 40 57
+        E 16 b0 40 56
+        E 15 b0 40 55
+        E 15 b0 40 52
+        E 14 b0 40 4d
+        E 15 b0 40 45
+        E 15 b0 40 0d
+        E 15 b0 40 00
+        E 78 b0 7b 00
+        CCINTERP 32
+        CHASE_CC_TAKEOFFS 1
+        GUID {D633339F-3724-379D-F784-F4537A6CED2A}
+        IGNTEMPO 0 120 4 4
+        SRCCOLOR 8
+        VELLANE -1 202 0
+        CFGEDITVIEW 0 0.005641 30 12 0 -1 0 0 0 0.5
+        KEYSNAP 0
+        TRACKSEL 0
+        EVTFILTER 0 -1 -1 -1 -1 0 0 0 0 -1 -1 -1 -1 0 -1 0 -1 -1
+        CFGEDIT 1 1 0 1 0 0 1 1 1 1 1 0.125 0 54 1669 1500 0 0 0 0 0 0 0 0 0 0.5 0 0 1 64
+      >
+    >
+    <ITEM
+      POSITION 10.5
+      SNAPOFFS 0
+      LENGTH 328
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0
+      FADEOUT 1 0 0 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {647D14A0-9CB3-C415-308E-938C10C2C491}
+      IID 10
+      NAME "Sonata Op. 90--Jean Abdelmoula      - Abdelmola01.mid"
+      VOLPAN 1 0 1 -1
+      SOFFS 10.5 21
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {26979489-2450-2002-AA76-B6E01F432FAD}
+      <SOURCE MIDI
+        HASDATA 1 384 QN
+        CCINTERP 32
+        POOLEDEVTS {D552E6AE-8537-D026-CCEA-353F081EEA9F}
         <X 0 0 0 0 3 "Sonata Op. 90--Jean Abdelmoula     "
           /wNTb25hdGEgT3AuIDkwLS1KZWFuIEFiZGVsbW91bGEgICAgIA==
         >
@@ -13761,9 +14445,15 @@
         E 293 b0 7b 00
         CCINTERP 32
         CHASE_CC_TAKEOFFS 1
-        GUID {13E35274-B22F-8DCD-BC8F-3FB8431D99B4}
+        GUID {4BCC5B12-B1CB-F6E9-81D4-1B39FAAC8A0D}
         IGNTEMPO 0 120 4 4
-        SRCCOLOR 0
+        SRCCOLOR 9
+        VELLANE -1 202 0
+        CFGEDITVIEW 0 0.005641 30 12 0 -1 0 0 0 0.5
+        KEYSNAP 0
+        TRACKSEL 0
+        EVTFILTER 0 -1 -1 -1 -1 0 0 0 0 -1 -1 -1 -1 0 -1 0 -1 -1
+        CFGEDIT 1 1 0 1 0 0 1 1 1 1 1 0.125 0 54 1669 1500 0 0 0 0 0 0 0 0 0 0.5 0 0 1 64
       >
     >
   >
@@ -13780,7 +14470,7 @@
     BUSCOMP 0 0 0 0 0
     SHOWINMIX 1 0.6667 0.5 1 0.5 -1 -1 -1
     FREEMODE 0
-    SEL 0
+    SEL 1
     REC 1 5088 1 0 0 0 0
     VU 2
     TRACKHEIGHT 0 0 0 0 -1 0
@@ -13798,7 +14488,7 @@
       DOCKED 0
       BYPASS 0 0 0
       <VST "VSTi: Carla-Rack (falkTX)" CarlaRack.so 0 "" 1131572323<56535443726C636361726C612D726163> ""
-        Y2xyQ+5e7f4CAAAAAQAAAAAAAAACAAAAAAAAAAIAAAABAAAAAAAAAAIAAAAAAAAAYAUAAAEAAAAAABAA
+        Y2xyQ+5e7f4CAAAAAQAAAAAAAAACAAAAAAAAAAIAAAABAAAAAAAAAAIAAAAAAAAAeQUAAAEAAAAAABAA
         PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4KPCFET0NUWVBFIENBUkxBLVBST0pFQ1Q+CjxDQVJMQS1QUk9KRUNUIFZFUlNJT049JzIuMic+CiA8
         RW5naW5lU2V0dGluZ3M+CiAgPEZvcmNlU3RlcmVvPmZhbHNlPC9Gb3JjZVN0ZXJlbz4KICA8UHJlZmVyUGx1Z2luQnJpZGdlcz5mYWxzZTwvUHJlZmVyUGx1Z2luQnJp
         ZGdlcz4KICA8UHJlZmVyVWlCcmlkZ2VzPnRydWU8L1ByZWZlclVpQnJpZGdlcz4KICA8VUlzQWx3YXlzT25Ub3A+ZmFsc2U8L1VJc0Fsd2F5c09uVG9wPgogIDxNYXhQ
@@ -13812,8 +14502,8 @@
         cy9zZno6L3Vzci9zaGFyZS9zb3VuZHMvc2Z6PC9TRlpfUEFUSD4KIDwvRW5naW5lU2V0dGluZ3M+CgogPCEtLSBVcHJpZ2h0UGlhbm9LVy0yMDE5MDcwMyAtLT4KIDxQ
         bHVnaW4+CiAgPEluZm8+CiAgIDxUeXBlPlNGWjwvVHlwZT4KICAgPE5hbWU+VXByaWdodFBpYW5vS1ctMjAxOTA3MDM8L05hbWU+CiAgIDxGaWxlbmFtZT4vaG9tZS9w
         YXVsL29wdC9VcHJpZ2h0UGlhbm9LVy1TRlotMjAxOTA3MDMvVXByaWdodFBpYW5vS1ctMjAxOTA3MDMuc2Z6PC9GaWxlbmFtZT4KICA8L0luZm8+CgogIDxEYXRhPgog
-        ICA8QWN0aXZlPlllczwvQWN0aXZlPgogICA8Q29udHJvbENoYW5uZWw+MTwvQ29udHJvbENoYW5uZWw+CiAgIDxPcHRpb25zPjB4MWYwPC9PcHRpb25zPgogIDwvRGF0
-        YT4KIDwvUGx1Z2luPgo8L0NBUkxBLVBST0pFQ1Q+CgA=
+        ICA8QWN0aXZlPlllczwvQWN0aXZlPgogICA8Vm9sdW1lPjEuMjc8L1ZvbHVtZT4KICAgPENvbnRyb2xDaGFubmVsPjE8L0NvbnRyb2xDaGFubmVsPgogICA8T3B0aW9u
+        cz4weDFmMDwvT3B0aW9ucz4KICA8L0RhdGE+CiA8L1BsdWdpbj4KPC9DQVJMQS1QUk9KRUNUPgoA
         AERlZmF1bHQAEAAAAA==
       >
       PRESETNAME Default
@@ -13824,7 +14514,7 @@
     <ITEM
       POSITION 0
       SNAPOFFS 0
-      LENGTH 338.5
+      LENGTH 1
       LOOP 1
       ALLTAKES 0
       FADEIN 1 0 0 1 0 0
@@ -13843,6 +14533,506 @@
         HASDATA 1 384 QN
         CCINTERP 32
         POOLEDEVTS {6D3F6726-30D4-9142-00B3-EAE4929EA548}
+        <X 0 0 0 0 3 "Sonata Op. 90--Jean Abdelmoula     "
+          /wNTb25hdGEgT3AuIDkwLS1KZWFuIEFiZGVsbW91bGEgICAgIA==
+        >
+        E 0 c0 00 00
+        E 3 b0 00 00
+        E 1 b0 20 00
+        E 2 b0 07 64
+        E 762 b0 7b 00
+        CCINTERP 32
+        CHASE_CC_TAKEOFFS 1
+        GUID {CD3708BC-D8D5-8E27-C9A2-69B4364E3FE8}
+        IGNTEMPO 0 120 4 4
+        SRCCOLOR 4
+        VELLANE -1 195 0
+        CFGEDITVIEW -6868.711507 0.00579 14 12 0 -1 0 0 0 0.5
+        KEYSNAP 0
+        TRACKSEL 0
+        EVTFILTER 0 -1 -1 -1 -1 0 0 0 0 -1 -1 -1 -1 0 -1 0 -1 -1
+        CFGEDIT 1 1 0 1 0 0 1 1 1 1 1 0.125 1302 257 3068 1676 0 0 0 0 0 0 0 0 0 0.5 0 0 1 64
+      >
+    >
+    <ITEM
+      POSITION 1
+      SNAPOFFS 0
+      LENGTH 9.5
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0
+      FADEOUT 1 0 0 1 0 0
+      MUTE 0 0
+      SEL 1
+      IGUID {EC5DE24D-EE87-9133-C7BC-243E5CBA453C}
+      IID 8
+      NAME "Sonata Op. 90--Jean Abdelmoula      - Abdelmola01.mid"
+      VOLPAN 1 0 1 -1
+      SOFFS 1 2
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {A874038A-23B6-C629-5B17-C2584BCBD3D8}
+      <SOURCE MIDI
+        HASDATA 1 384 QN
+        CCINTERP 32
+        POOLEDEVTS {F183651D-3FEF-3BB7-CE70-C514A26C23DE}
+        <X 0 0 0 0 3 "Sonata Op. 90--Jean Abdelmoula     "
+          /wNTb25hdGEgT3AuIDkwLS1KZWFuIEFiZGVsbW91bGEgICAgIA==
+        >
+        E 0 c0 00 00
+        E 3 b0 00 00
+        E 1 b0 20 00
+        E 2 b0 07 64
+        E 1124 90 34 3e
+        E 2 90 28 45
+        E 0 90 43 46
+        E 1 90 37 55
+        E 5 90 3b 45
+        E 9 90 40 46
+        E 8 90 37 00
+        E 2 90 34 00
+        E 4 90 28 00
+        E 4 90 3b 00
+        E 4 90 43 00
+        E 5 90 40 00
+        E 204 b0 40 43
+        E 13 90 43 3c
+        E 2 b0 40 5c
+        E 7 90 34 45
+        E 0 90 37 46
+        E 0 90 3b 45
+        E 2 90 28 46
+        E 5 b0 40 7f
+        E 26 90 28 00
+        E 0 90 34 00
+        E 4 90 37 00
+        E 2 90 3b 00
+        E 9 90 40 46
+        E 44 90 40 00
+        E 289 90 42 42
+        E 25 90 43 00
+        E 24 b0 40 5d
+        E 15 b0 40 4a
+        E 4 90 42 00
+        E 11 b0 40 00
+        E 20 90 40 46
+        E 3 90 37 45
+        E 6 90 28 46
+        E 3 90 34 45
+        E 33 90 34 00
+        E 6 90 28 00
+        E 16 90 37 00
+        E 37 90 40 00
+        E 9 b0 40 26
+        E 15 b0 40 40
+        E 15 b0 40 41
+        E 30 b0 40 40
+        E 15 b0 40 32
+        E 15 b0 40 00
+        E 59 b0 43 08
+        E 34 90 45 40
+        E 2 b0 43 0a
+        E 6 90 39 46
+        E 11 90 32 42
+        E 1 90 42 42
+        E 1 90 26 45
+        E 11 b0 43 0c
+        E 15 b0 40 42
+        E 15 b0 40 4a
+        E 7 90 39 00
+        E 8 b0 40 52
+        E 3 90 26 00
+        E 12 b0 40 59
+        E 10 90 32 00
+        E 5 b0 40 5e
+        E 15 b0 40 63
+        E 0 90 45 00
+        E 7 90 42 00
+        E 8 b0 40 67
+        E 14 b0 40 6b
+        E 15 b0 40 6e
+        E 15 b0 40 70
+        E 30 b0 43 0f
+        E 30 b0 43 14
+        E 15 b0 43 19
+        E 15 b0 43 1e
+        E 14 b0 43 27
+        E 15 b0 43 36
+        E 15 b0 40 6d
+        E 0 b0 43 4c
+        E 15 b0 40 6a
+        E 0 b0 43 6a
+        E 15 b0 40 64
+        E 0 b0 43 7f
+        E 14 b0 40 5b
+        E 15 b0 40 52
+        E 15 b0 40 48
+        E 15 b0 40 40
+        E 15 b0 40 00
+        E 192 b0 40 3c
+        E 14 b0 40 40
+        E 4 90 45 3a
+        E 11 b0 40 42
+        E 2 90 3e 42
+        E 2 90 42 3c
+        E 11 b0 40 44
+        E 15 b0 40 46
+        E 15 b0 40 49
+        E 15 b0 40 4b
+        E 1 90 3e 00
+        E 14 b0 40 4d
+        E 6 90 42 00
+        E 9 b0 40 4e
+        E 8 90 45 00
+        E 14 b0 40 4f
+        E 15 b0 40 50
+        E 15 b0 40 50
+        E 15 b0 40 51
+        E 14 b0 40 52
+        E 15 b0 40 53
+        E 15 b0 40 54
+        E 15 b0 40 55
+        E 15 b0 40 55
+        E 14 b0 40 56
+        E 30 b0 40 56
+        E 23 90 45 39
+        E 7 90 3e 39
+        E 1 b0 40 56
+        E 7 90 3c 39
+        E 6 90 42 39
+        E 2 b0 40 54
+        E 14 b0 40 4f
+        E 15 b0 40 47
+        E 15 b0 40 00
+        E 44 b0 40 37
+        E 15 b0 40 45
+        E 15 b0 40 4b
+        E 15 b0 40 51
+        E 3 90 3c 00
+        E 11 b0 40 54
+        E 6 90 45 00
+        E 5 90 3e 00
+        E 4 b0 40 56
+        E 15 b0 40 58
+        E 15 b0 40 5a
+        E 15 b0 40 5b
+        E 1 90 42 00
+        E 14 b0 40 5c
+        E 15 b0 40 5c
+        E 15 b0 40 5d
+        E 44 b0 40 5d
+        E 89 b0 40 5c
+        E 15 b0 40 58
+        E 13 90 43 39
+        E 1 b0 40 52
+        E 5 90 3e 39
+        E 3 90 3b 39
+        E 7 b0 40 4a
+        E 15 b0 40 40
+        E 14 b0 40 00
+        E 42 90 43 00
+        E 44 90 45 39
+        E 3 90 3e 00
+        E 6 90 42 39
+        E 9 90 3c 39
+        E 6 90 3b 00
+        E 5 90 39 39
+        E 66 90 39 00
+        E 3 90 3c 00
+        E 1 b0 40 42
+        E 15 b0 40 46
+        E 8 90 45 00
+        E 6 b0 40 49
+        E 5 90 42 00
+        E 10 b0 40 4a
+        E 15 b0 40 4c
+        E 15 b0 40 4d
+        E 15 b0 40 4f
+        E 14 b0 40 51
+        E 16 b0 40 52
+        E 15 b0 40 54
+        E 15 b0 40 55
+        E 15 b0 40 56
+        E 44 b0 40 56
+        E 15 b0 40 53
+        E 0 90 3b 39
+        E 2 90 47 39
+        E 12 90 43 39
+        E 1 b0 40 4e
+        E 14 b0 40 44
+        E 9 90 37 39
+        E 6 b0 40 00
+        E 60 b0 40 29
+        E 15 b0 40 43
+        E 15 b0 40 48
+        E 0 b0 43 7c
+        E 1 90 43 00
+        E 12 90 3b 00
+        E 2 b0 40 4c
+        E 0 b0 43 73
+        E 1 90 47 00
+        E 14 b0 40 4f
+        E 0 b0 43 69
+        E 2 90 37 00
+        E 12 b0 40 52
+        E 0 b0 43 58
+        E 15 b0 40 55
+        E 0 b0 43 40
+        E 15 b0 40 56
+        E 0 b0 43 1b
+        E 14 b0 40 59
+        E 0 b0 43 00
+        E 15 b0 40 5b
+        E 15 b0 40 5d
+        E 15 b0 40 60
+        E 59 b0 40 5c
+        E 15 b0 40 53
+        E 15 b0 40 46
+        E 14 b0 40 00
+        E 166 90 47 43
+        E 2 90 3b 39
+        E 5 90 3e 39
+        E 2 90 37 39
+        E 2 90 43 41
+        E 1 90 2b 3e
+        E 13 90 3b 00
+        E 8 90 3e 00
+        E 3 90 37 00
+        E 2 90 2b 00
+        E 0 90 43 00
+        E 6 90 47 00
+        E 115 90 3d 45
+        E 39 90 3d 00
+        E 46 b0 40 3e
+        E 14 b0 40 58
+        E 10 90 47 3d
+        E 5 b0 40 7f
+        E 0 90 37 3c
+        E 1 90 3b 42
+        E 3 90 2b 45
+        E 3 90 3e 46
+        E 17 90 37 00
+        E 5 90 3b 00
+        E 8 90 2b 00
+        E 0 90 43 45
+        E 15 90 3e 00
+        E 18 90 43 00
+        E 253 90 47 00
+        E 29 90 45 44
+        E 62 90 45 00
+        E 23 b0 40 60
+        E 15 b0 40 4c
+        E 14 b0 40 00
+        E 1 90 43 45
+        E 5 90 3b 46
+        E 9 90 2b 46
+        E 3 90 1f 46
+        E 27 90 2b 00
+        E 9 90 3b 00
+        E 2 90 1f 00
+        E 19 b0 40 44
+        E 10 90 43 00
+        E 5 b0 40 48
+        E 14 b0 40 49
+        E 15 b0 40 47
+        E 15 b0 40 42
+        E 15 b0 40 00
+        E 135 90 49 44
+        E 3 90 3d 46
+        E 7 90 46 42
+        E 3 90 2a 43
+        E 1 b0 40 17
+        E 8 90 1e 46
+        E 7 b0 40 46
+        E 8 90 3d 00
+        E 6 b0 40 4b
+        E 15 b0 40 50
+        E 4 90 1e 00
+        E 6 90 2a 00
+        E 5 b0 40 56
+        E 15 b0 40 5b
+        E 8 90 46 00
+        E 2 90 49 00
+        E 5 b0 40 61
+        E 14 b0 40 66
+        E 15 b0 40 6a
+        E 15 b0 40 6c
+        E 15 b0 40 6e
+        E 29 b0 40 71
+        E 15 b0 40 75
+        E 15 b0 40 7b
+        E 14 b0 40 7f
+        E 104 b0 40 6f
+        E 23 b0 40 60
+        E 15 b0 40 53
+        E 14 b0 40 46
+        E 15 b0 40 00
+        E 201 90 49 3e
+        E 4 90 42 45
+        E 3 b0 40 33
+        E 3 90 46 3b
+        E 12 b0 40 41
+        E 14 b0 40 44
+        E 15 b0 40 46
+        E 15 b0 40 48
+        E 15 b0 40 4a
+        E 9 90 42 00
+        E 6 b0 40 4c
+        E 14 b0 40 4e
+        E 3 90 49 00
+        E 13 b0 40 50
+        E 9 90 46 00
+        E 6 b0 40 52
+        E 15 b0 40 54
+        E 15 b0 40 56
+        E 15 b0 40 57
+        E 14 b0 40 59
+        E 0 b0 43 08
+        E 15 b0 40 5a
+        E 15 b0 40 5b
+        E 0 b0 43 0a
+        E 15 b0 40 5c
+        E 14 b0 43 0d
+        E 15 b0 43 10
+        E 15 b0 43 13
+        E 15 b0 43 15
+        E 6 90 49 39
+        E 4 90 46 39
+        E 5 b0 40 5b
+        E 0 b0 43 19
+        E 4 90 42 39
+        E 3 90 40 39
+        E 7 b0 40 59
+        E 0 b0 43 1f
+        E 15 b0 40 53
+        E 0 b0 43 2c
+        E 15 b0 40 49
+        E 0 b0 43 3e
+        E 15 b0 40 2e
+        E 0 b0 43 54
+        E 15 b0 40 00
+        E 0 b0 43 6e
+        E 14 b0 43 7f
+        E 31 b0 40 44
+        E 14 b0 40 49
+        E 15 b0 40 4f
+        E 15 b0 40 55
+        E 9 90 40 00
+        E 14 b0 40 59
+        E 14 b0 40 5c
+        E 3 90 42 00
+        E 12 b0 40 5f
+        E 12 90 49 00
+        E 3 b0 40 62
+        E 15 b0 40 65
+        E 8 90 46 00
+        E 6 b0 40 68
+        E 15 b0 40 6a
+        E 30 b0 40 6c
+        E 113 90 42 39
+        E 5 b0 40 6a
+        E 8 90 47 39
+        E 7 b0 40 66
+        E 4 90 3e 39
+        E 11 b0 40 60
+        E 14 b0 40 59
+        E 15 b0 40 51
+        E 15 b0 40 47
+        E 15 b0 40 3d
+        E 8 90 3e 00
+        E 2 90 47 00
+        E 5 b0 40 00
+        E 58 90 46 39
+        E 6 90 49 39
+        E 4 90 40 39
+        E 15 90 42 00
+        E 4 90 3d 39
+        E 62 b0 40 42
+        E 14 b0 40 47
+        E 10 90 3d 00
+        E 5 b0 40 4b
+        E 7 90 49 00
+        E 8 b0 40 4e
+        E 15 b0 40 51
+        E 12 90 40 00
+        E 3 b0 40 54
+        E 2 90 46 00
+        E 13 b0 40 56
+        E 15 b0 40 58
+        E 15 b0 40 5b
+        E 15 b0 40 5d
+        E 14 b0 40 5e
+        E 15 b0 40 60
+        E 30 b0 40 62
+        E 90 90 4a 39
+        E 6 90 3b 39
+        E 1 90 47 39
+        E 1 90 3e 39
+        E 27 b0 40 5f
+        E 15 b0 40 5a
+        E 15 b0 40 51
+        E 15 b0 40 46
+        E 15 b0 40 00
+        E 89 b0 40 40
+        E 14 b0 40 45
+        E 15 b0 40 48
+        E 15 b0 40 4b
+        E 6 90 47 00
+        E 7 90 3e 00
+        E 2 b0 40 4e
+        E 4 90 4a 00
+        E 11 b0 40 50
+        E 1 90 3b 00
+        E 13 b0 40 52
+        E 15 b0 40 54
+        E 15 b0 40 55
+        E 15 b0 40 57
+        E 14 b0 40 57
+        E 15 b0 40 58
+        E 89 b0 40 57
+        E 16 b0 40 56
+        E 15 b0 40 55
+        E 15 b0 40 52
+        E 14 b0 40 4d
+        E 15 b0 40 45
+        E 15 b0 40 0d
+        E 15 b0 40 00
+        E 78 b0 7b 00
+        CCINTERP 32
+        CHASE_CC_TAKEOFFS 1
+        GUID {D8CD9470-EC00-511D-8111-030F08DA8554}
+        IGNTEMPO 0 120 4 4
+        SRCCOLOR 7
+        VELLANE -1 195 0
+        CFGEDITVIEW 0 0.00579 14 12 0 -1 0 0 0 0.5
+        KEYSNAP 0
+        TRACKSEL 0
+        EVTFILTER 0 -1 -1 -1 -1 0 0 0 0 -1 -1 -1 -1 0 -1 0 -1 -1
+        CFGEDIT 1 1 0 1 0 0 1 1 1 1 1 0.125 1302 257 3068 1676 0 0 0 0 0 0 0 0 0 0.5 0 0 1 64
+      >
+    >
+    <ITEM
+      POSITION 10.5
+      SNAPOFFS 0
+      LENGTH 328
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0
+      FADEOUT 1 0 0 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {6B148CCD-A1DD-1B05-9D06-129EDFC23872}
+      IID 11
+      NAME "Sonata Op. 90--Jean Abdelmoula      - Abdelmola01.mid"
+      VOLPAN 1 0 1 -1
+      SOFFS 10.5 21
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {846B6D73-1E14-5742-3727-01A3E7F83FF5}
+      <SOURCE MIDI
+        HASDATA 1 384 QN
+        CCINTERP 32
+        POOLEDEVTS {9DAD7014-A4CE-D81E-3AD0-58A03124457B}
         <X 0 0 0 0 3 "Sonata Op. 90--Jean Abdelmoula     "
           /wNTb25hdGEgT3AuIDkwLS1KZWFuIEFiZGVsbW91bGEgICAgIA==
         >
@@ -27291,15 +28481,15 @@
         E 293 b0 7b 00
         CCINTERP 32
         CHASE_CC_TAKEOFFS 1
-        GUID {CD3708BC-D8D5-8E27-C9A2-69B4364E3FE8}
+        GUID {0C55C205-649C-4A32-22CF-02C4DD83D9C4}
         IGNTEMPO 0 120 4 4
-        SRCCOLOR 4
-        VELLANE -1 100 0
-        CFGEDITVIEW -305.868457 0.128447 0 12 0 -1 0 0 0 0.5
+        SRCCOLOR 10
+        VELLANE -1 195 0
+        CFGEDITVIEW 0 0.00579 14 12 0 -1 0 0 0 0.5
         KEYSNAP 0
         TRACKSEL 0
         EVTFILTER 0 -1 -1 -1 -1 0 0 0 0 -1 -1 -1 -1 0 -1 0 -1 -1
-        CFGEDIT 1 1 0 1 0 0 1 1 1 1 1 0.125 0 54 1593 1471 0 0 0 0 0 0 0 0 0 0.5 0 0 1 64
+        CFGEDIT 1 1 0 1 0 0 1 1 1 1 1 0.125 1302 257 3068 1676 0 0 0 0 0 0 0 0 0 0.5 0 0 1 64
       >
     >
   >
@@ -27334,7 +28524,7 @@
       DOCKED 0
       BYPASS 0 0 0
       <VST "VSTi: Carla-Rack (falkTX)" CarlaRack.so 0 "" 1131572323<56535443726C636361726C612D726163> ""
-        Y2xyQ+5e7f4CAAAAAQAAAAAAAAACAAAAAAAAAAIAAAABAAAAAAAAAAIAAAAAAAAAYAUAAAEAAAAAABAA
+        Y2xyQ+5e7f4CAAAAAQAAAAAAAAACAAAAAAAAAAIAAAABAAAAAAAAAAIAAAAAAAAAeQUAAAEAAAAAABAA
         PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4KPCFET0NUWVBFIENBUkxBLVBST0pFQ1Q+CjxDQVJMQS1QUk9KRUNUIFZFUlNJT049JzIuMic+CiA8
         RW5naW5lU2V0dGluZ3M+CiAgPEZvcmNlU3RlcmVvPmZhbHNlPC9Gb3JjZVN0ZXJlbz4KICA8UHJlZmVyUGx1Z2luQnJpZGdlcz5mYWxzZTwvUHJlZmVyUGx1Z2luQnJp
         ZGdlcz4KICA8UHJlZmVyVWlCcmlkZ2VzPnRydWU8L1ByZWZlclVpQnJpZGdlcz4KICA8VUlzQWx3YXlzT25Ub3A+ZmFsc2U8L1VJc0Fsd2F5c09uVG9wPgogIDxNYXhQ
@@ -27348,8 +28538,8 @@
         cy9zZno6L3Vzci9zaGFyZS9zb3VuZHMvc2Z6PC9TRlpfUEFUSD4KIDwvRW5naW5lU2V0dGluZ3M+CgogPCEtLSBVcHJpZ2h0UGlhbm9LVy0yMDE5MDcwMyAtLT4KIDxQ
         bHVnaW4+CiAgPEluZm8+CiAgIDxUeXBlPlNGWjwvVHlwZT4KICAgPE5hbWU+VXByaWdodFBpYW5vS1ctMjAxOTA3MDM8L05hbWU+CiAgIDxGaWxlbmFtZT4vaG9tZS9w
         YXVsL29wdC9VcHJpZ2h0UGlhbm9LVy1TRlotMjAxOTA3MDMvVXByaWdodFBpYW5vS1ctMjAxOTA3MDMuc2Z6PC9GaWxlbmFtZT4KICA8L0luZm8+CgogIDxEYXRhPgog
-        ICA8QWN0aXZlPlllczwvQWN0aXZlPgogICA8Q29udHJvbENoYW5uZWw+MTwvQ29udHJvbENoYW5uZWw+CiAgIDxPcHRpb25zPjB4MWYwPC9PcHRpb25zPgogIDwvRGF0
-        YT4KIDwvUGx1Z2luPgo8L0NBUkxBLVBST0pFQ1Q+CgA=
+        ICA8QWN0aXZlPlllczwvQWN0aXZlPgogICA8Vm9sdW1lPjEuMjc8L1ZvbHVtZT4KICAgPENvbnRyb2xDaGFubmVsPjE8L0NvbnRyb2xDaGFubmVsPgogICA8T3B0aW9u
+        cz4weDFmMDwvT3B0aW9ucz4KICA8L0RhdGE+CiA8L1BsdWdpbj4KPC9DQVJMQS1QUk9KRUNUPgoA
         AERlZmF1bHQAEAAAAA==
       >
       PRESETNAME Default
@@ -36096,7 +37286,7 @@
       DOCKED 0
       BYPASS 0 0 0
       <VST "VSTi: Carla-Rack (falkTX)" CarlaRack.so 0 "" 1131572323<56535443726C636361726C612D726163> ""
-        Y2xyQ+5e7f4CAAAAAQAAAAAAAAACAAAAAAAAAAIAAAABAAAAAAAAAAIAAAAAAAAAYAUAAAEAAAAAABAA
+        Y2xyQ+5e7f4CAAAAAQAAAAAAAAACAAAAAAAAAAIAAAABAAAAAAAAAAIAAAAAAAAAeQUAAAEAAAAAABAA
         PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4KPCFET0NUWVBFIENBUkxBLVBST0pFQ1Q+CjxDQVJMQS1QUk9KRUNUIFZFUlNJT049JzIuMic+CiA8
         RW5naW5lU2V0dGluZ3M+CiAgPEZvcmNlU3RlcmVvPmZhbHNlPC9Gb3JjZVN0ZXJlbz4KICA8UHJlZmVyUGx1Z2luQnJpZGdlcz5mYWxzZTwvUHJlZmVyUGx1Z2luQnJp
         ZGdlcz4KICA8UHJlZmVyVWlCcmlkZ2VzPnRydWU8L1ByZWZlclVpQnJpZGdlcz4KICA8VUlzQWx3YXlzT25Ub3A+ZmFsc2U8L1VJc0Fsd2F5c09uVG9wPgogIDxNYXhQ
@@ -36110,8 +37300,8 @@
         cy9zZno6L3Vzci9zaGFyZS9zb3VuZHMvc2Z6PC9TRlpfUEFUSD4KIDwvRW5naW5lU2V0dGluZ3M+CgogPCEtLSBVcHJpZ2h0UGlhbm9LVy0yMDE5MDcwMyAtLT4KIDxQ
         bHVnaW4+CiAgPEluZm8+CiAgIDxUeXBlPlNGWjwvVHlwZT4KICAgPE5hbWU+VXByaWdodFBpYW5vS1ctMjAxOTA3MDM8L05hbWU+CiAgIDxGaWxlbmFtZT4vaG9tZS9w
         YXVsL29wdC9VcHJpZ2h0UGlhbm9LVy1TRlotMjAxOTA3MDMvVXByaWdodFBpYW5vS1ctMjAxOTA3MDMuc2Z6PC9GaWxlbmFtZT4KICA8L0luZm8+CgogIDxEYXRhPgog
-        ICA8QWN0aXZlPlllczwvQWN0aXZlPgogICA8Q29udHJvbENoYW5uZWw+MTwvQ29udHJvbENoYW5uZWw+CiAgIDxPcHRpb25zPjB4MWYwPC9PcHRpb25zPgogIDwvRGF0
-        YT4KIDwvUGx1Z2luPgo8L0NBUkxBLVBST0pFQ1Q+CgA=
+        ICA8QWN0aXZlPlllczwvQWN0aXZlPgogICA8Vm9sdW1lPjEuMjc8L1ZvbHVtZT4KICAgPENvbnRyb2xDaGFubmVsPjE8L0NvbnRyb2xDaGFubmVsPgogICA8T3B0aW9u
+        cz4weDFmMDwvT3B0aW9ucz4KICA8L0RhdGE+CiA8L1BsdWdpbj4KPC9DQVJMQS1QUk9KRUNUPgoA
         AERlZmF1bHQAEAAAAA==
       >
       PRESETNAME Default
@@ -44700,7 +45890,7 @@
       DOCKED 0
       BYPASS 0 0 0
       <VST "VSTi: Carla-Rack (falkTX)" CarlaRack.so 0 "" 1131572323<56535443726C636361726C612D726163> ""
-        Y2xyQ+5e7f4CAAAAAQAAAAAAAAACAAAAAAAAAAIAAAABAAAAAAAAAAIAAAAAAAAAYAUAAAEAAAAAABAA
+        Y2xyQ+5e7f4CAAAAAQAAAAAAAAACAAAAAAAAAAIAAAABAAAAAAAAAAIAAAAAAAAAeQUAAAEAAAAAABAA
         PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4KPCFET0NUWVBFIENBUkxBLVBST0pFQ1Q+CjxDQVJMQS1QUk9KRUNUIFZFUlNJT049JzIuMic+CiA8
         RW5naW5lU2V0dGluZ3M+CiAgPEZvcmNlU3RlcmVvPmZhbHNlPC9Gb3JjZVN0ZXJlbz4KICA8UHJlZmVyUGx1Z2luQnJpZGdlcz5mYWxzZTwvUHJlZmVyUGx1Z2luQnJp
         ZGdlcz4KICA8UHJlZmVyVWlCcmlkZ2VzPnRydWU8L1ByZWZlclVpQnJpZGdlcz4KICA8VUlzQWx3YXlzT25Ub3A+ZmFsc2U8L1VJc0Fsd2F5c09uVG9wPgogIDxNYXhQ
@@ -44714,8 +45904,8 @@
         cy9zZno6L3Vzci9zaGFyZS9zb3VuZHMvc2Z6PC9TRlpfUEFUSD4KIDwvRW5naW5lU2V0dGluZ3M+CgogPCEtLSBVcHJpZ2h0UGlhbm9LVy0yMDE5MDcwMyAtLT4KIDxQ
         bHVnaW4+CiAgPEluZm8+CiAgIDxUeXBlPlNGWjwvVHlwZT4KICAgPE5hbWU+VXByaWdodFBpYW5vS1ctMjAxOTA3MDM8L05hbWU+CiAgIDxGaWxlbmFtZT4vaG9tZS9w
         YXVsL29wdC9VcHJpZ2h0UGlhbm9LVy1TRlotMjAxOTA3MDMvVXByaWdodFBpYW5vS1ctMjAxOTA3MDMuc2Z6PC9GaWxlbmFtZT4KICA8L0luZm8+CgogIDxEYXRhPgog
-        ICA8QWN0aXZlPlllczwvQWN0aXZlPgogICA8Q29udHJvbENoYW5uZWw+MTwvQ29udHJvbENoYW5uZWw+CiAgIDxPcHRpb25zPjB4MWYwPC9PcHRpb25zPgogIDwvRGF0
-        YT4KIDwvUGx1Z2luPgo8L0NBUkxBLVBST0pFQ1Q+CgA=
+        ICA8QWN0aXZlPlllczwvQWN0aXZlPgogICA8Vm9sdW1lPjEuMjc8L1ZvbHVtZT4KICAgPENvbnRyb2xDaGFubmVsPjE8L0NvbnRyb2xDaGFubmVsPgogICA8T3B0aW9u
+        cz4weDFmMDwvT3B0aW9ucz4KICA8L0RhdGE+CiA8L1BsdWdpbj4KPC9DQVJMQS1QUk9KRUNUPgoA
         AERlZmF1bHQAEAAAAA==
       >
       PRESETNAME Default
@@ -81916,7 +83106,7 @@
     BUSCOMP 0 0 0 0 0
     SHOWINMIX 1 0.6667 0.5 1 0.5 -1 -1 -1
     FREEMODE 0
-    SEL 1
+    SEL 0
     REC 1 5088 1 0 0 0 0
     VU 2
     TRACKHEIGHT 0 0 0 0 -1 0
@@ -81934,7 +83124,7 @@
       DOCKED 0
       BYPASS 0 0 0
       <VST "VSTi: Carla-Rack (falkTX)" CarlaRack.so 0 "" 1131572323<56535443726C636361726C612D726163> ""
-        Y2xyQ+5e7f4CAAAAAQAAAAAAAAACAAAAAAAAAAIAAAABAAAAAAAAAAIAAAAAAAAAYAUAAAEAAAAAABAA
+        Y2xyQ+5e7f4CAAAAAQAAAAAAAAACAAAAAAAAAAIAAAABAAAAAAAAAAIAAAAAAAAAeQUAAAEAAAAAABAA
         PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4KPCFET0NUWVBFIENBUkxBLVBST0pFQ1Q+CjxDQVJMQS1QUk9KRUNUIFZFUlNJT049JzIuMic+CiA8
         RW5naW5lU2V0dGluZ3M+CiAgPEZvcmNlU3RlcmVvPmZhbHNlPC9Gb3JjZVN0ZXJlbz4KICA8UHJlZmVyUGx1Z2luQnJpZGdlcz5mYWxzZTwvUHJlZmVyUGx1Z2luQnJp
         ZGdlcz4KICA8UHJlZmVyVWlCcmlkZ2VzPnRydWU8L1ByZWZlclVpQnJpZGdlcz4KICA8VUlzQWx3YXlzT25Ub3A+ZmFsc2U8L1VJc0Fsd2F5c09uVG9wPgogIDxNYXhQ
@@ -81948,8 +83138,8 @@
         cy9zZno6L3Vzci9zaGFyZS9zb3VuZHMvc2Z6PC9TRlpfUEFUSD4KIDwvRW5naW5lU2V0dGluZ3M+CgogPCEtLSBVcHJpZ2h0UGlhbm9LVy0yMDE5MDcwMyAtLT4KIDxQ
         bHVnaW4+CiAgPEluZm8+CiAgIDxUeXBlPlNGWjwvVHlwZT4KICAgPE5hbWU+VXByaWdodFBpYW5vS1ctMjAxOTA3MDM8L05hbWU+CiAgIDxGaWxlbmFtZT4vaG9tZS9w
         YXVsL29wdC9VcHJpZ2h0UGlhbm9LVy1TRlotMjAxOTA3MDMvVXByaWdodFBpYW5vS1ctMjAxOTA3MDMuc2Z6PC9GaWxlbmFtZT4KICA8L0luZm8+CgogIDxEYXRhPgog
-        ICA8QWN0aXZlPlllczwvQWN0aXZlPgogICA8Q29udHJvbENoYW5uZWw+MTwvQ29udHJvbENoYW5uZWw+CiAgIDxPcHRpb25zPjB4MWYwPC9PcHRpb25zPgogIDwvRGF0
-        YT4KIDwvUGx1Z2luPgo8L0NBUkxBLVBST0pFQ1Q+CgA=
+        ICA8QWN0aXZlPlllczwvQWN0aXZlPgogICA8Vm9sdW1lPjEuMjc8L1ZvbHVtZT4KICAgPENvbnRyb2xDaGFubmVsPjE8L0NvbnRyb2xDaGFubmVsPgogICA8T3B0aW9u
+        cz4weDFmMDwvT3B0aW9ucz4KICA8L0RhdGE+CiA8L1BsdWdpbj4KPC9DQVJMQS1QUk9KRUNUPgoA
         AERlZmF1bHQAEAAAAA==
       >
       PRESETNAME Default
@@ -81966,7 +83156,7 @@
       FADEIN 1 0 0 1 0 0
       FADEOUT 1 0 0 1 0 0
       MUTE 0 0
-      SEL 1
+      SEL 0
       IGUID {4CC18017-C9D4-D31C-DCFF-F7EADBF54E76}
       IID 7
       NAME "Prelude/Chor./F.-Jean Abdelmoula    - Abdelmola03.mid"
