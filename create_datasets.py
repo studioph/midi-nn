@@ -5,10 +5,6 @@ from midi_nn import utils
 
 # TODO
 # things to add to model input:
-# time delta of previous note
-# time delta of next note
-# velocity of previous note
-# velocity of next note?
 # articulation? Investigate Dorico files
 
 parser = argparse.ArgumentParser()

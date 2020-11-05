@@ -19,7 +19,7 @@ utils.checkGPU() # throws an error if the GPU isn't detected
 TRAIN_FILE = 'data/train.npy'
 TEST_FILE = 'data/test.npy'
 NUM_FEATURES = 6
-BATCH_SIZE = 128
+BATCH_SIZE = 64
 SEQ_LENGTH = 100
 NUM_EPOCHS = 100
 MODEL_SAVE_FILE = 'model.zip'
