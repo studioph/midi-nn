@@ -18,10 +18,10 @@ utils.checkGPU() # throws an error if the GPU isn't detected
 ####################
 TRAIN_FILE = 'data/train.npy'
 TEST_FILE = 'data/test.npy'
-NUM_FEATURES = 10
+NUM_FEATURES = 6
 BATCH_SIZE = 128
 SEQ_LENGTH = 100
-NUM_EPOCHS = 275
+NUM_EPOCHS = 100
 MODEL_SAVE_FILE = 'model.zip'
 LOSS_SAVE_DIR = 'losses'
 LEARNING_RATE = 1e-5
@@ -93,11 +93,10 @@ def train():
 
 train_losses, test_losses = train()
 
-##############################################################
-# Plot losses, save losses to a file, and save the model also
-##############################################################
+###########################################
+# Plot losses and save the model to a file
+###########################################
 utils.plot_losses(train_losses, test_losses, NUM_EPOCHS, LEARNING_RATE, BATCH_SIZE)
-np.save(f'{LOSS_SAVE_DIR}/{BATCH_SIZE}_{LEARNING_RATE}_{datetime.now().isoformat()}.npy', (train_losses, test_losses))
 torch.save(model, MODEL_SAVE_FILE)
 
 ###########################################

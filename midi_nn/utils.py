@@ -118,24 +118,19 @@ Args:
 Returns:
     (list(tuple)): A list of tuples with the following shape:
         (velocity, pitch, duration, 
-            prev velocity, prev pitch, prev duration, prev delta,
-            next velocity, next pitch, next duration, next delta)
+            prev velocity, prev pitch, prev duration, prev delta)
 """
 def seq_to_arr(seq):
     notes = []
     for idx, note in enumerate(seq.notes):
         prev_note = seq.notes[idx - 1]
-        next_note = seq.notes[(idx + 1) % len(seq.notes)]
 
         duration = get_note_delta(note)
         prev_duration = get_note_delta(prev_note)
-        next_duration = get_note_delta(next_note)
         prev_delta = get_note_delta(prev_note, note)
-        next_delta = get_note_delta(note, next_note)
 
         notes.append([note.velocity, note.pitch, duration,
-            prev_note.velocity, prev_note.pitch, prev_duration, prev_delta,
-            next_note.velocity, next_note.pitch, next_duration, next_delta])
+            prev_note.velocity, prev_note.pitch, prev_duration, prev_delta])
     return notes
 
 ##########################
