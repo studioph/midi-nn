@@ -1,4 +1,0 @@
-jupyterlab<3.0.0,>=2.2.8
-note-seq<0.0.2,>=0.0.1
-notebook<7.0.0,>=6.1.4
-tensorflow-gpu<3.0.0,>=2.3.1

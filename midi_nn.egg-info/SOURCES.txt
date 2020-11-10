@@ -1,8 +1,0 @@
-README.rst
-setup.py
-midi_nn/__init__.py
-midi_nn.egg-info/PKG-INFO
-midi_nn.egg-info/SOURCES.txt
-midi_nn.egg-info/dependency_links.txt
-midi_nn.egg-info/requires.txt
-midi_nn.egg-info/top_level.txt
