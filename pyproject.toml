@@ -6,6 +6,10 @@ authors = ["paul <dev@studiop.page>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+note-seq = "^0.0.2"
+matplotlib = "^3.3.2"
+torch = "^1.7.0"
+numpy = "^1.19.4"
 
 [tool.poetry.dev-dependencies]
 
