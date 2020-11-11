@@ -64,6 +64,18 @@ def convert_midi_files(args: tuple):
 #####################
 
 """
+Rounds a number to the nearest multiple
+Args:
+    x (int) - The number to round
+    base (int) - The base to round to multiples of
+
+Returns
+    (int) - x rounded to the nearest multiple of base
+"""
+def round_multiple(x, base):
+    return base * round(x / base)
+
+"""
 Extracts batches of length N from an array of samples
 Args:
     arr (iterable) - An array-like object to be split into batches
@@ -110,17 +122,20 @@ def get_note_delta(*args):
 
 """
 Converts a NoteSequence into an array of note attributes. 
-Note: starts with the second note of the sequence.
+The function takes in a number of distinct velocities or bins. The real velocities are
+squashed to fit into these bins in order to mimic MIDI output from a notation software.
 
 Args:
     seq (NoteSequence): The NoteSequence object to convert
+    bins (int): The number of dinstinct velocities to squash the note velocities into
 
 Returns:
     (list(tuple)): A list of tuples with the following shape:
-        (velocity, pitch, duration, 
-            prev velocity, prev pitch, prev duration, prev delta)
+        (true velocity, squashed velocity, pitch, duration, 
+            prev squashed velocity, prev pitch, prev duration, prev delta)
 """
-def seq_to_arr(seq):
+def seq_to_arr(seq, bins):
+    base = 128 / bins
     notes = []
     for idx, note in enumerate(seq.notes):
         prev_note = seq.notes[idx - 1]
@@ -129,8 +144,8 @@ def seq_to_arr(seq):
         prev_duration = get_note_delta(prev_note)
         prev_delta = get_note_delta(prev_note, note)
 
-        notes.append([note.velocity, note.pitch, duration,
-            prev_note.velocity, prev_note.pitch, prev_duration, prev_delta])
+        notes.append([note.velocity, round_multiple(note.velocity, base), note.pitch, duration,
+            round_multiple(prev_note.velocity, base), prev_note.pitch, prev_duration, prev_delta])
     return notes
 
 ##########################
