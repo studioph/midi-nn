@@ -21,11 +21,10 @@ TEST_FILE = 'data/test.npy'
 NUM_FEATURES = 7
 BATCH_SIZE = 64
 SEQ_LENGTH = 100
-NUM_EPOCHS = 500
+NUM_EPOCHS = 550
 MODEL_SAVE_FILE = 'model.zip'
 LOSS_SAVE_DIR = 'losses'
 LEARNING_RATE = 1e-6
-WARM_UP_STEPS = 10
 
 ##################################
 # define Datasets and Dataloaders
