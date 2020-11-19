@@ -6,6 +6,7 @@ from midi_nn import utils
 # TODO
 # things to add to model input:
 # articulation? Investigate Dorico files
+# previous deltas are negative???
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--input_file", dest = "input_file", type=str, help = "Input file containing NoteSequences")

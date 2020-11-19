@@ -1,4 +1,5 @@
 import numpy as np
+import torch
 
 """
 A basic predictor that simply uses the velocity of the previous note as the prediction, 
@@ -8,9 +9,9 @@ class BasicVelocityPredictor:
     def __init__(self):
         pass
 
-    def predict(notes):
-        return notes[-1:] + notes[:-1]
+    def predict(tensor):
+        return torch.cat((tensor[-1:], tensor[:-1]))
 
-    def predict_avg(notes):
-        avg_velocity = np.mean(notes)
-        return np.full((len(notes)), avg_velocity).tolist()
+    def predict_avg(tensor):
+        avg_velocity = torch.mean(tensor).item()
+        return torch.tensor(np.full((len(tensor)), avg_velocity))
