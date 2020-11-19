@@ -9,9 +9,9 @@ class BasicVelocityPredictor:
     def __init__(self):
         pass
 
-    def predict(tensor):
+    def predict(self, tensor):
         return torch.cat((tensor[-1:], tensor[:-1]))
 
-    def predict_avg(tensor):
+    def predict_avg(self, tensor):
         avg_velocity = torch.mean(tensor).item()
         return torch.tensor(np.full((len(tensor)), avg_velocity))
