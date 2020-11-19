@@ -41,9 +41,24 @@ def sequence_midi_files_generative(input_dir: str, output_dir: str, model_file: 
         num_features = len(seq_arr[0][1:])
         results = sequence_midi_file(seq_arr, model, num_features, 10)
         integrate_output(notesequence, results)
-        sequence_proto_to_midi_file(notesequence, f'{output_dir}/{file}')
+        sequence_proto_to_midi_file(notesequence, f'{output_dir}/{file[:-4]}_gen.mid')
 
     print('Done')
+
+def sequence_midi_files_transform(input_dir: str, output_dir: str, model_file: str):
+    model = utils.load_model(model_file)
+    files = [file for file in os.listdir(input_dir) if file.lower().endswith('.mid')]
+    for file in files:
+        print(f'Sequencing {file}...')
+        notesequence = midi_file_to_note_sequence(f'{input_dir}/{file}')
+        seq_arr = utils.seq_to_arr(notesequence, 8)
+        num_features = len(seq_arr[0][1:])
+        inputs = torch.tensor(np.array(seq_arr)[:,1:]).view(1, -1, num_features)
+        inputs = inputs.cuda().float()
+        with torch.no_grad():
+            results = model(inputs)
+        integrate_output(notesequence, results.view(-1).tolist())
+        sequence_proto_to_midi_file(notesequence, f'{output_dir}/{file[:-4]}_trans.mid')
 
 
 input_dir = 'data/inputs'
