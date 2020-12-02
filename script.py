@@ -43,6 +43,10 @@ loss_function = nn.MSELoss()
 optimizer = optim.SGD(model.parameters(), lr=LEARNING_RATE)
 min_loss = sys.maxsize
 
+# using RMSE since it makes more logical sense in context of velocities
+def RMSELoss(yhat, y):
+    return torch.sqrt(loss_function(yhat, y))
+
 """
 Runs the validation loop on the model
 
@@ -56,7 +60,7 @@ def validate():
     for batch, targets in test_loader:
         model.zero_grad()
         output= model(batch.cuda())
-        loss = loss_function(output,targets.cuda())
+        loss = RMSELoss(output,targets.cuda())
         losses.append(loss.item())
     mean_loss = np.mean(losses)
     # getting undefined variable error (min_loss) here for some reason even though it is defined above
