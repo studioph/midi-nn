@@ -1,7 +1,6 @@
 data/midi
 .vscode/
 *.cpr
-*.png
 **/__pycache__/
 .ipynb_checkpoints/
 test.py
