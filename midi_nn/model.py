@@ -21,8 +21,8 @@ class VelocityLSTM(nn.Module):
         self.activation = activation
         self.target_size = 1 # predicting velocity
         # LSTM shape is (batch_size, seq_len, num_features)
-        self.lstm = nn.LSTM(num_features, num_features, batch_first=True)
-        self.hidden2target = nn.Linear(num_features, self.target_size)
+        self.lstm = nn.LSTM(num_features, num_features, batch_first=True, bidirectional=True)
+        self.hidden2target = nn.Linear(num_features * 2, self.target_size)
 
     def forward(self, batch):
         lstm_out, _ = self.lstm(batch)

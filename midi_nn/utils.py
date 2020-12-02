@@ -29,7 +29,7 @@ Loads a saved Pytorch model to either the CPU or GPU (default)
 Returns:
     A Pytorch model bound to the GPU
 """
-def load_model(model_file_path: str, use_gpu=True):
+def load_model(model_file_path: str):
     model = torch.load(model_file_path)
     return model.cuda()
 
